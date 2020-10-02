@@ -14,10 +14,10 @@ VSCode ESLint extension enabled
 
 ## Details on the ESLint files
 
-> extends recommended configuration
-> enforces strict mode everywhere (warn only)
-> enforces CommonJS modules use (only stable node.js option for now)
-> enforces unix-style line breaks
-> enforces 4 spaces indentation
-> quite a few of the recommended options are overrided
-> ES6 coding patterns are enforced whenever possible
+- extends recommended configuration
+- enforces strict mode everywhere (warn only)
+- enforces CommonJS modules use (only stable node.js option for now)
+- enforces unix-style line breaks
+- enforces 4 spaces indentation
+- quite a few of the recommended options are overrided
+- ES6 coding patterns are enforced whenever possible
