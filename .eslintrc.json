@@ -160,8 +160,8 @@
         "func-names": ["warn", "never"],
         "func-style": ["error", "expression"],
         "function-call-argument-newline": ["warn", "consistent"],
-        "id-denylist": ["warn", "resolve", "reject", "err", "data", "result"],
-        "id-match": ["warn", "^[a-zA-Z_$]+$", {
+        "id-denylist": ["off", "resolve", "reject", "err", "data", "result"],
+        "id-match": ["warn", "^[0-9a-zA-Z_$]+$", {
             "properties": true,
             "onlyDeclarations": false,
             "ignoreDestructuring": true
@@ -181,11 +181,11 @@
         "max-statements-per-line": ["warn", { 
             "max": 3
         }],
-        "multiline-comment-style": ["error", "starred-block"],
+        "multiline-comment-style": ["off", "starred-block"],
         "new-parens": ["error"],
         "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 3 }],
         "no-array-constructor": ["error"],
-        "no-bitwise": ["warn"],
+        "no-bitwise": ["off"],
         "no-lonely-if": ["error"],
         "no-multi-assign": ["error"],
         "no-multiple-empty-lines": ["error"],
@@ -212,8 +212,8 @@
         "one-var": ["error", "consecutive"],
         "one-var-declaration-per-line": ["error", "always"],
         "operator-assignment": ["warn", "always"],
-        "operator-linebreak": ["warn", "none"],
-        "padding-line-between-statements": ["error", {
+        "operator-linebreak": ["off", "none"],
+        "padding-line-between-statements": ["off", {
             "blankLine": "always",
             "prev": "*",
             "next": ["if", "for", "class", "const", "do", "let", "return", "switch", "try", "var", "while"]
