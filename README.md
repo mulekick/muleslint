@@ -4,11 +4,11 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 
 ## How I use ESLint in my dev environment
 
-- Windows 10 x64, WSL2 enabled
-- Debian 10 distro on WSL2
-- Node.js 12.18.4 LTS on Debian 10
-- ESLint v7.9.0 installed globally
-- VSCode targeting Debian 10 through WSL
+- Windows 10 x64, Hyper-V enabled
+- Debian Bullseye running in a Hyper-V VM
+- Node.js 16.13.0 LTS on Debian
+- ESLint 8.2.0 installed globally
+- VSCode targeting Debian 10 through SSH
 - VSCode ESLint extension enabled
 - .eslint* files copied in each project's root folder
 
