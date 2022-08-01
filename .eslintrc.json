@@ -8,8 +8,8 @@
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 11,
-        // Use CommonJS type modules (require)
-        "sourceType": "script",
+        // Update to ESM modules (import)
+        "sourceType": "module",
         "ecmaFeatures": {
             "impliedStrict ": true
         }
@@ -17,10 +17,6 @@
     "globals": {
         "app": "readonly"
     },
-    // eslint-plugin-html : something in this module prevents the VSCode Eslint extension from working ...
-    // Failed to load plugin 'html' declared in '.eslintrc.json': Cannot find module 'eslint-plugin-html'
-    // Require stack: - /home/admin/git/bit-level-arithmetic-js/__placeholder__.js
-    /*
     "plugins": [
         // Lint scripts embedded in HTML pages
         "html"
@@ -29,7 +25,6 @@
         // extensions of HTML files to be linted
         "html/html-extensions": [".html"]
     },
-    */
     "rules": {
         // Enable additional rules
         "indent": ["error", 4],
