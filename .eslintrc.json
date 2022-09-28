@@ -1,17 +1,22 @@
 {
     "env": {
-        "es2020": true,
+        "es2022": true,
         "node": true,
         "browser": true
     },
     // Base configuration
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:node/recommended"
+    ],
     "parserOptions": {
-        "ecmaVersion": 11,
+        "ecmaVersion": 13,
         // Update to ESM modules (import)
         "sourceType": "module",
         "ecmaFeatures": {
-            "impliedStrict ": true
+            "impliedStrict ": true,
+            // why would someone do this ?
+            "globalReturn": false
         }
     },
     "globals": {
@@ -19,14 +24,21 @@
     },
     "plugins": [
         // Lint scripts embedded in HTML pages
-        "html"
+        "html",
+        // additional set of rules for node.js
+        "node"
     ],
     "settings": {
         // extensions of HTML files to be linted
-        "html/html-extensions": [".html"]
+        "html/html-extensions": [".html"],
+        "html/javascript-tag-names": ["script"],
+        // do not include 'module' type ...
+        "html/javascript-mime-types": ["text/javascript"]
     },
     "rules": {
-        // Enable additional rules
+
+        // ======= Enable additional rules atop eslint:recommended ========
+
         "indent": ["error", 4],
 
         "linebreak-style": ["error", "unix"],
@@ -36,9 +48,9 @@
         }],
         "semi": ["error", "always"],
         
-        // Override default options for rules from base configurations
+        // ===== Override default options for eslint:recommended rules ====
 
-        // --------- possible errors --------------
+        // --------------------- possible errors --------------------------
         // use Promise.all or recursive async calls instead ...
         "no-await-in-loop": ["error"],
         // keep as-is, remember to wrap assignments in parentheses ...
@@ -63,7 +75,7 @@
         "no-useless-backreference": ["error"],
         "require-atomic-updates": ["error"],
 
-        // ---------- best practices --------------
+        // --------------------- best practices ---------------------------
         "accessor-pairs": ["error", {
             "getWithoutSet": true,
             "setWithoutGet": true,
@@ -155,10 +167,10 @@
         }],
         "yoda": ["error"],
 
-        // ------------ strict mode ---------------
+        // ----------------------- strict mode ----------------------------
         "strict": ["warn"],
 
-        // ------------ variables -----------------
+        // ------------------------ variables -----------------------------
         "init-declarations": ["error", "always"],
         "no-label-var": ["error"],
         // allow shadowing of built-ins global variables
@@ -171,7 +183,7 @@
         "no-undefined": ["error"],
         "no-use-before-define": ["error"],
 
-        // -------- stylistic issues --------------
+        // --------------------- stylistic issues -------------------------
         "array-bracket-spacing": ["warn", "always"],
         "block-spacing": ["error", "always"],
         // maybe switch single-line to true later ... 
@@ -273,7 +285,7 @@
         "template-tag-spacing": ["error"],
         "unicode-bom": ["error"],
 
-        // ------------ ECMAScript 6 --------------
+        // ----------------------- ECMAScript 6 ---------------------------
         "arrow-body-style": ["warn", "as-needed"],
         "arrow-parens": ["error", "as-needed"],
         "arrow-spacing": ["error"],
@@ -310,21 +322,49 @@
             "after": false
         }],
         
-        // Disable rules from base configurations
+        // =============== Disable eslint:recommended rules ===============
 
-        // --------- possible errors --------------
+        // --------------------- possible errors --------------------------
         "no-sparse-arrays": ["off"],
 
-        // ---------- best practices --------------
+        // deprecated, but shows up in vscode after the node plugin install
+        "no-process-exit": ["off"],
 
-        // ------------ strict mode ---------------
+        // --------------------- best practices ---------------------------
 
-        // ------------ variables -----------------
-        "no-unused-vars": ["warn"]
+        // ----------------------- strict mode ----------------------------
 
-        // -------- stylistic issues --------------
+        // ------------------------ variables -----------------------------
+        "no-unused-vars": ["warn"],
 
-        // ------------ ECMAScript 6 --------------
+        // --------------------- stylistic issues -------------------------
+
+        // ----------------------- ECMAScript 6 ---------------------------
+
+        // ==== Enable additional rules atop plugin:node/recommended ======
+
+        // == Override default options for plugin:node/recommended rules ==
+
+        // --------------------- possible errors --------------------------
+        // downgrade to warn in the event the code is to run inside a container ... 
+        "node/no-missing-import": ["warn"],
+
+        // --------------------- best practices ---------------------------
+
+        // --------------------- stylistic issues -------------------------
+
+        // ============ Disable plugin:node/recommended rules =============        
+
+        // --------------------- possible errors --------------------------
+        // for the moment I prefer to use shell aliases + shebang  over npm bin field to manage node.js CLI programs ...
+        "node/shebang": ["off"],
+        "node/no-process-exit": ["off"]        
+
+        // --------------------- best practices ---------------------------
+
+        // --------------------- stylistic issues -------------------------
+
+
     },
     // Disable ESLint inline comments
     "noInlineConfig": false,
