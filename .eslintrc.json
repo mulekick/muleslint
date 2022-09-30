@@ -5,10 +5,7 @@
         "browser": true
     },
     // Base configuration
-    "extends": [
-        "eslint:recommended",
-        "plugin:node/recommended"
-    ],
+    "extends": ["eslint:recommended", "plugin:node/recommended"],
     "parserOptions": {
         "ecmaVersion": 13,
         // Update to ESM modules (import)
@@ -36,27 +33,24 @@
         "html/javascript-mime-types": ["text/javascript"]
     },
     "rules": {
-
-        // ======= Enable additional rules atop eslint:recommended ========
-
+        // ===== Override default options for eslint:recommended rules ====
+        // ------------------- indent & formatting ------------------------
         "indent": ["error", 4],
-
         "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "backtick", { 
+        "quotes": ["error", "backtick", {
             "avoidEscape": true,
             "allowTemplateLiterals": true
         }],
         "semi": ["error", "always"],
-        
-        // ===== Override default options for eslint:recommended rules ====
-
         // --------------------- possible errors --------------------------
         // use Promise.all or recursive async calls instead ...
         "no-await-in-loop": ["error"],
         // keep as-is, remember to wrap assignments in parentheses ...
         "no-cond-assign": ["error", "except-parens"],
         // a while (true) loop until a condition is met inside the loop body is sometimes necessary ...
-        "no-constant-condition": ["error", { "checkLoops": false }],
+        "no-constant-condition": ["error", {
+            "checkLoops": false
+        }],
         "no-extra-parens": ["error", "all", {
             "conditionalAssign": false,
             "returnAssign": false,
@@ -70,11 +64,10 @@
         "no-template-curly-in-string": ["error"],
         "no-unreachable-loop": ["error"],
         "no-unsafe-negation": ["error", {
-            "enforceForOrderingRelations": true 
+            "enforceForOrderingRelations": true
         }],
         "no-useless-backreference": ["error"],
         "require-atomic-updates": ["error"],
-
         // --------------------- best practices ---------------------------
         "accessor-pairs": ["error", {
             "getWithoutSet": true,
@@ -86,7 +79,7 @@
         // this rule remains as-is as there are very few exceptions to it ...  
         "class-methods-use-this": ["error"],
         // keeping this at 20 but downgrading to warn, sometimes a high complexity threshold is required ...
-        "complexity": ["warn", { 
+        "complexity": ["warn", {
             "max": 20
         }],
         "consistent-return": ["error"],
@@ -135,46 +128,44 @@
         "no-throw-literal": ["warn"],
         "no-unmodified-loop-condition": ["error"],
         // enforce the use of semicolons at the end of expressions ...
-        "no-unused-expressions": ["error", { 
-            "allowShortCircuit": true, 
-            "allowTernary": true 
+        "no-unused-expressions": ["error", {
+            "allowShortCircuit": true,
+            "allowTernary": true
         }],
         "no-useless-call": ["error"],
         "no-useless-concat": ["error"],
         "no-useless-escape": ["error"],
         "no-useless-return": ["warn"],
-        "no-void": ["error", { 
+        "no-void": ["error", {
             "allowAsStatement": true
         }],
         // this comment pattern is useful as a reminder since the exclamation marks often flag code shortcomings and limitations ...
-        "no-warning-comments": ["warn", { 
+        "no-warning-comments": ["warn", {
             "terms": ["!!!"],
-            "location": "anywhere" 
+            "location": "anywhere"
         }],
         // upgrade this to error to enforce the use of non capturing groups when required ...
         "prefer-named-capture-group": ["error"],
         "prefer-promise-reject-errors": ["error"],
-        "prefer-regex-literals": ["error", { 
-            "disallowRedundantWrapping": true 
+        "prefer-regex-literals": ["error", {
+            "disallowRedundantWrapping": true
         }],
         // very important ...
         "require-await": ["error"],
         // the /u flag will have the regexp engine parse code points instead of code units/surrogate pairs ... 
         "require-unicode-regexp": ["error"],
         "vars-on-top": ["error"],
-        "wrap-iife": ["error", "inside", { 
+        "wrap-iife": ["error", "inside", {
             "functionPrototypeMethods": true
         }],
         "yoda": ["error"],
-
         // ----------------------- strict mode ----------------------------
         "strict": ["warn"],
-
         // ------------------------ variables -----------------------------
         "init-declarations": ["error", "always"],
         "no-label-var": ["error"],
         // allow shadowing of built-ins global variables
-        "no-shadow": ["warn", { 
+        "no-shadow": ["warn", {
             "builtinGlobals": false,
             "hoist": "all",
             "allow": []
@@ -182,16 +173,17 @@
         "no-undef-init": ["error"],
         "no-undefined": ["error"],
         "no-use-before-define": ["error"],
-
         // --------------------- stylistic issues -------------------------
         "array-bracket-spacing": ["warn", "always"],
         "block-spacing": ["error", "always"],
         // maybe switch single-line to true later ... 
-        "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+        "brace-style": ["error", "1tbs", {
+            "allowSingleLine": true
+        }],
         "comma-dangle": ["error", "never"],
-        "comma-spacing": ["error", { 
-            "before": false, 
-            "after": true 
+        "comma-spacing": ["error", {
+            "before": false,
+            "after": true
         }],
         "comma-style": ["error", "last"],
         "computed-property-spacing": ["error", "never"],
@@ -214,14 +206,14 @@
         }],
         "keyword-spacing": ["error"],
         "lines-between-class-members": ["error", "always"],
-        "max-depth": ["warn", { 
-            "max": 4 
-        }],
-        // note to self : exercise caution before upping this value ...
-        "max-nested-callbacks": ["error", { 
+        "max-depth": ["warn", {
             "max": 4
         }],
-        "max-statements-per-line": ["warn", { 
+        // note to self : exercise caution before upping this value ...
+        "max-nested-callbacks": ["error", {
+            "max": 4
+        }],
+        "max-statements-per-line": ["warn", {
             "max": 3
         }],
         "new-parens": ["error"],
@@ -242,7 +234,7 @@
         "no-whitespace-before-property": ["error"],
         "nonblock-statement-body-position": ["error", "below"],
         "object-curly-newline": ["error", {
-            "ObjectExpression": { 
+            "ObjectExpression": {
                 "multiline": true,
                 "minProperties": 10,
                 "consistent": true
@@ -274,23 +266,22 @@
         "space-in-parens": ["error", "never"],
         "space-infix-ops": ["error"],
         "space-unary-ops": ["error", {
-            "words": true, 
+            "words": true,
             "nonwords": false
         }],
         "spaced-comment": ["error", "always"],
         "switch-colon-spacing": ["error", {
-            "after": true, 
+            "after": true,
             "before": true
         }],
         "template-tag-spacing": ["error"],
         "unicode-bom": ["error"],
-
         // ----------------------- ECMAScript 6 ---------------------------
         "arrow-body-style": ["warn", "as-needed"],
         "arrow-parens": ["error", "as-needed"],
         "arrow-spacing": ["error"],
         "generator-star-spacing": ["error", {
-            "before": true, 
+            "before": true,
             "after": false
         }],
         // enforces wrapping short ifs in parentheses ...
@@ -298,8 +289,8 @@
             "allowParens": true
         }],
         "no-duplicate-imports": ["error"],
-        "no-useless-computed-key": ["error", { 
-            "enforceForClassMembers": true 
+        "no-useless-computed-key": ["error", {
+            "enforceForClassMembers": true
         }],
         "no-useless-rename": ["error"],
         "no-var": ["error"],
@@ -318,53 +309,79 @@
         "symbol-description": ["warn"],
         "template-curly-spacing": ["error", "always"],
         "yield-star-spacing": ["error", {
-            "before": true, 
+            "before": true,
             "after": false
         }],
-        
         // =============== Disable eslint:recommended rules ===============
-
         // --------------------- possible errors --------------------------
         "no-sparse-arrays": ["off"],
-
         // deprecated, but shows up in vscode after the node plugin install
         "no-process-exit": ["off"],
-
         // --------------------- best practices ---------------------------
-
         // ----------------------- strict mode ----------------------------
-
         // ------------------------ variables -----------------------------
         "no-unused-vars": ["warn"],
-
         // --------------------- stylistic issues -------------------------
-
         // ----------------------- ECMAScript 6 ---------------------------
-
-        // ==== Enable additional rules atop plugin:node/recommended ======
-
         // == Override default options for plugin:node/recommended rules ==
-
         // --------------------- possible errors --------------------------
+        "node/handle-callback-err": ["error", "^(e|err|error\\w*)$"],
+        // too bad callback name is not regex-configurable ...
+        "node/no-callback-literal": ["error"],
         // downgrade to warn in the event the code is to run inside a container ... 
         "node/no-missing-import": ["warn"],
-
+        "node/no-missing-require": ["warn"],
+        "node/no-new-require": ["error"],
+        // CJS specific (__filename and __dirname are not supported in ESM)
+        "node/no-path-concat": ["error"],
         // --------------------- best practices ---------------------------
-
         // --------------------- stylistic issues -------------------------
-
+        // very important rule, update callbacks names list when necessary
+        "node/callback-return": ["error", ["callback", "cb", "next"]],
+        // CJS specific
+        "node/exports-style": ["error", "module.exports"],
+        // restrict imports to *.js files for now
+        "node/file-extension-in-import": ["error", "always", {
+            ".js": "always"
+        }],
+        "node/global-require": ["error"],
+        "node/no-mixed-requires": ["warn", {
+            "grouping": false,
+            "allowCall": true
+        }],
+        // warn about usage without prevent it : that's the only way to
+        // pass environment variables to a containerized process and preventing
+        // it would lead to a 'one image per configuration' policy
+        "node/no-process-env": ["warn"],
+        // keep this list up-to-date with my personal dislikes hehe
+        "node/no-restricted-import": ["error", [{
+            "name": "axios",
+            "message": "You can achieve the same results with node.js builtins"
+        }, {
+            "name": "async",
+            "message": "You can achieve the same results with node.js builtins"
+        }]],
+        // necessary in a handful of case, so it's only a warn
+        "node/no-sync": ["warn"],
+        // enforce the use of imports to follow node.js official recommendations ...
+        "node/prefer-global/buffer": ["error", "never"],
+        "node/prefer-global/console": ["error", "never"],
+        "node/prefer-global/process": ["error", "never"],
+        "node/prefer-global/text-decoder": ["error", "never"],
+        "node/prefer-global/text-encoder": ["error", "never"],
+        "node/prefer-global/url-search-params": ["error", "never"],
+        "node/prefer-global/url": ["error", "never"],
+        // those may be upgraded to error later, only a warn for now
+        "node/prefer-promises/dns": ["warn"],
+        "node/prefer-promises/fs": ["warn"],
         // ============ Disable plugin:node/recommended rules =============        
-
         // --------------------- possible errors --------------------------
-        // for the moment I prefer to use shell aliases + shebang  over npm bin field to manage node.js CLI programs ...
+        // for the moment I prefer shell aliases + shebang over package.json bin field
         "node/shebang": ["off"],
-        "node/no-process-exit": ["off"]        
-
+        // unnecessary if errors are properly handled
+        "node/no-process-exit": ["off"]
         // --------------------- best practices ---------------------------
-
         // --------------------- stylistic issues -------------------------
-
-
     },
     // Disable ESLint inline comments
     "noInlineConfig": false,
