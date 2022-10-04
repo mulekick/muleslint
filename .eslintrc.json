@@ -33,49 +33,60 @@
         "html/javascript-mime-types": ["text/javascript"]
     },
     "rules": {
+        // ================================================================
         // ===== Override default options for eslint:recommended rules ====
-        // ------------------- indent & formatting ------------------------
-        "indent": ["error", 4],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "backtick", {
-            "avoidEscape": true,
-            "allowTemplateLiterals": true
+        // ================================================================
+        // --------------------- possible problems ------------------------ 
+        "array-callback-return": ["error", {
+            "allowImplicit": false,
+            "checkForEach": true
         }],
-        "semi": ["error", "always"],
-        // --------------------- possible errors --------------------------
         // use Promise.all or recursive async calls instead ...
         "no-await-in-loop": ["error"],
         // keep as-is, remember to wrap assignments in parentheses ...
         "no-cond-assign": ["error", "except-parens"],
+        // when operators evaluation order has not been considered ...
+        "no-constant-binary-expression": "error",
         // a while (true) loop until a condition is met inside the loop body is sometimes necessary ...
         "no-constant-condition": ["error", {
             "checkLoops": false
         }],
-        "no-extra-parens": ["error", "all", {
-            "conditionalAssign": false,
-            "returnAssign": false,
-            "nestedBinaryExpressions": false,
-            "enforceForArrowConditionals": false
-        }],
+        "no-constructor-return": ["error"],
+        "no-duplicate-imports": ["error"],
+        "no-empty-pattern": ["error"],
         "no-inner-declarations": ["error", "both"],
         // this rule remains as-is as there are very few exceptions to it ...
         "no-loss-of-precision": ["error"],
         "no-promise-executor-return": ["error"],
+        "no-self-compare": ["error"],
         "no-template-curly-in-string": ["error"],
+        "no-unmodified-loop-condition": ["error"],
         "no-unreachable-loop": ["error"],
         "no-unsafe-negation": ["error", {
             "enforceForOrderingRelations": true
         }],
+        // exercise auction before using optional chaining ...
+        "no-unsafe-optional-chaining": ["error", {
+            "disallowArithmeticOperators": true
+        }],
+        "no-unused-private-class-members": ["error"],
+        "no-use-before-define": ["error"],
         "no-useless-backreference": ["error"],
         "require-atomic-updates": ["error"],
-        // --------------------- best practices ---------------------------
+        // do not test variables types against other variables ...
+        "valid-typeof": ["error", {
+            "requireStringLiterals": true
+        }],
+        // ------------------------ suggestions ---------------------------
         "accessor-pairs": ["error", {
             "getWithoutSet": true,
             "setWithoutGet": true,
             "enforceForClassMembers": true
         }],
-        "array-callback-return": ["error"],
+        "arrow-body-style": ["warn", "as-needed"],
         "block-scoped-var": ["error"],
+        // hmm ...
+        "capitalized-comments": ["error", "never"],
         // this rule remains as-is as there are very few exceptions to it ...  
         "class-methods-use-this": ["error"],
         // keeping this at 20 but downgrading to warn, sometimes a high complexity threshold is required ...
@@ -83,59 +94,192 @@
             "max": 20
         }],
         "consistent-return": ["error"],
+        // clever use of, bind, call and apply should avoid such things ...
+        "consistent-this": ["warn", "__this__"],
+        // I give this a try ...
+        "curly": ["warn", "multi-or-nest", "consistent"],
         "default-case": ["error"],
         "default-case-last": ["error"],
         "default-param-last": ["error"],
+        "dot-notation": ["warn"],
         "eqeqeq": ["error", "always"],
+        // I always use anonymous function expressions ...
+        "func-name-matching": ["error", "always"],
+        "func-names": ["error", "never"],
+        // use function expressions to prevent the code from being hoisted to the top of its scope ...
+        "func-style": ["error", "expression"],
         "grouped-accessor-pairs": ["error", "getBeforeSet"],
-        // very important ...
+        // very important, and use Object.hasOwn() to test ...
         "guard-for-in": ["error"],
-        // I mean cmon it's 2021 ... use console for this stuff.
+        // keep this rule as-is, not flexible enough ...
+        "id-match": ["warn", "^[0-9a-zA-Z_$]+$", {
+            "properties": true,
+            "classFields": true,
+            "onlyDeclarations": true,
+            "ignoreDestructuring": true
+        }],
+        "init-declarations": ["error", "always"],
+        "logical-assignment-operators": ["error", "always"],
+        // remember to use class declarations as much as possible (unlike functions) ...
+        "max-classes-per-file": ["error", {
+            "ignoreExpressions": true,
+            "max": 1
+        }],
+        "max-depth": ["warn", {
+            "max": 4
+        }],
+        "max-lines": ["warn", 750],
+        "max-lines-per-function": ["warn", {
+            "max": 100,
+            "skipBlankLines": true,
+            "skipComments": true,
+            "IIFEs": true
+        }],
+        // note to self : exercise caution before upping this value ...
+        "max-nested-callbacks": ["error", {
+            "max": 4
+        }],
+        "max-params": ["warn", {
+            "max": 5
+        }],
+        // this value is to be fine tuned later ....
+        "max-statements": ["warn", {
+            "max": 50
+        }],
+        // this value is to be fine tuned later ....
+        "new-cap": ["error", {
+            "newIsCap": true,
+            "capIsNew": true,
+            // "newIsCapExceptionPattern": "^[a-zA-Z]+$",
+            // "capIsNewExceptionPattern": "^[a-zA-Z]+$",
+            "properties": true
+        }],
+        // use console instead
         "no-alert": ["error"],
+        "no-array-constructor": ["error"],
+        // this rule will be upgraded to error, bitwise is only to be used in very specific cases ...  
+        "no-bitwise": ["error"],
         "no-caller": ["error"],
+        // wrap cases blocks in curly brackets when doing this ...
         "no-case-declarations": ["error"],
-        "no-constructor-return": ["error"],
+        // enforces wrapping short ifs in parentheses ...
+        "no-confusing-arrow": ["error", {
+            "allowParens": true
+        }],
+        // seldomly used, so it's worthy of a warn ...
+        "no-continue": ["warn"],
+        // I give this a try ...        
+        "no-div-regex": ["error"],
         "no-else-return": ["error"],
         "no-empty-function": ["warn"],
-        "no-empty-pattern": ["error"],
         "no-eq-null": ["error"],
         "no-eval": ["error"],
         "no-extend-native": ["error"],
         "no-extra-bind": ["error"],
+        // never use labels to begin with ...
+        "no-extra-label": ["error"],
         // this rule remains as-is as there are very few exceptions to it ...
         "no-floating-decimal": ["error"],
-        "no-implicit-coercion": ["warn"],
-        "no-implicit-globals": ["error"],
+        "no-implicit-coercion": ["warn", {
+            // adding the option as I think it may prevent errors ...
+            "disallowTemplateShorthand": true
+        }],
+        // useful for browser scripts design, make sure that it is disabled on ESM modules ...
+        "no-implicit-globals": ["error", {
+            "lexicalBindings": true
+        }],
         "no-implied-eval": ["error"],
+        "no-inline-comments": ["error"],
         // this rule remains as-is as there are very few exceptions to it ...
-        "no-invalid-this": ["error"],
+        "no-invalid-this": ["error", {
+            // keep this option in mind, it may change according to how the constructor names will be enforced ...
+            "capIsConstructor": true
+        }],
         "no-iterator": ["error"],
+        "no-label-var": ["error"],
+        // disallow labels use for good ...
         "no-labels": ["error"],
         "no-lone-blocks": ["error"],
+        "no-lonely-if": ["error"],
         "no-loop-func": ["error"],
+        // enable this rule and relax it a bit ...
+        "no-magic-numbers": ["error", {
+            "ignoreArrayIndexes": true,
+            "ignoreDefaultValues": true
+        }],
+        "no-multi-assign": ["error"],
         "no-multi-str": ["error"],
+        "no-negated-condition": ["error"],
+        // using builting static methods may be an alternative ...
+        "no-new": ["error"],
         "no-new-func": ["error"],
+        "no-new-object": ["error"],
+        // disable instantiating wrappers for string, number and boolean ...
         "no-new-wrappers": ["error"],
         "no-octal-escape": ["error"],
-        // this rule remains as-is as there are very few exceptions to it ...        
+        // enforce strict policy regaring this pattern ...        
         "no-param-reassign": ["error"],
         "no-proto": ["error"],
+        // this may be fine tuned later ...  
+        "no-restricted-exports": ["error", {
+            "restrictedNamedExports": ["default"]
+        }],
+        // useful for browser scripts ...
+        "no-restricted-globals": ["error", {
+            "name": "event",
+            "message": "Use local event parameter instead."
+        }, {
+            "name": "error",
+            "message": "Use local error parameter instead."
+        }],
+        // experiment with this rule ...
+        "no-restricted-syntax": ["warn", {
+            "selector": "WithStatement",
+            "message": "with syntax is obsolete and confusing."
+        }, {
+            "selector": "SequenceExpression",
+            "message": "use only for loops initializations and afterthoughts."
+        }],
         // upgrade to error to enforce wrapping of assignments in parentheses ...
         "no-return-assign": ["error", "except-parens"],
         "no-return-await": ["error"],
         "no-script-url": ["error"],
-        "no-self-compare": ["error"],
-        "no-throw-literal": ["warn"],
-        "no-unmodified-loop-condition": ["error"],
+        // uncomment if the restricted syntax is too restrictive ...
+        // "no-sequences": ["error", {
+        //     "allowInParentheses": false 
+        // }],
+        // do not allow shadowing of built-ins global variables
+        "no-shadow": ["warn", {
+            "builtinGlobals": true,
+            "hoist": "all",
+            "allow": [],
+            "ignoreOnInitialization": true
+        }],
+        // upgrade to error
+        "no-throw-literal": ["error"],
+        "no-undef-init": ["error"],
+        "no-undefined": ["error"],
+        // I have to get better at namiçng things ...
+        "no-underscore-dangle": ["warn"],
+        "no-unneeded-ternary": ["warn", {
+            "defaultAssignment": true
+        }],
         // enforce the use of semicolons at the end of expressions ...
         "no-unused-expressions": ["error", {
             "allowShortCircuit": true,
             "allowTernary": true
         }],
+        // keep in mind that call and apply are slower than normal invocation ...
         "no-useless-call": ["error"],
+        "no-useless-computed-key": ["error", {
+            "enforceForClassMembers": true
+        }],
         "no-useless-concat": ["error"],
+        "no-useless-constructor": ["error"],
         "no-useless-escape": ["error"],
-        "no-useless-return": ["warn"],
+        "no-useless-rename": ["error"],
+        "no-useless-return": ["error"],
+        "no-var": ["error"],
         "no-void": ["error", {
             "allowAsStatement": true
         }],
@@ -144,37 +288,66 @@
             "terms": ["!!!"],
             "location": "anywhere"
         }],
+        "object-shorthand": ["error", "consistent"],
+        "one-var": ["error", "consecutive"],
+        "one-var-declaration-per-line": ["error", "always"],
+        "operator-assignment": ["warn", "always"],
+        "prefer-arrow-callback": ["warn"],
+        "prefer-const": ["warn", {
+            // see if 'any' is a viable option ...
+            "destructuring": "any",
+            "ignoreReadBeforeAssign": false
+        }],
+        // thos may be fine tuned later ...
+        "prefer-destructuring": ["warn", {
+            "VariableDeclarator": {
+                "array": true,
+                "object": true
+            },
+            "AssignmentExpression": {
+                "array": true,
+                "object": true
+            }
+        }, {
+            "enforceForRenamedProperties": false
+        }],
+        "prefer-exponentiation-operator": ["error"],
         // upgrade this to error to enforce the use of non capturing groups when required ...
         "prefer-named-capture-group": ["error"],
+        "prefer-numeric-literals": ["error"],
+        // let's go for the modern approach ...
+        "prefer-object-has-own": ["error"],
+        "prefer-object-spread": ["error"],
         "prefer-promise-reject-errors": ["error"],
         "prefer-regex-literals": ["error", {
             "disallowRedundantWrapping": true
         }],
+        "prefer-rest-params": ["error"],
+        "prefer-spread": ["error"],
+        // downgrading to warn, sometimes exceptions improve code readability ...
+        "prefer-template": ["warn"],
+        "quote-props": ["error", "as-needed", {
+            "keywords": true,
+            "numbers": true
+        }],
+        // failsafe when using parseInt() ...
+        "radix": ["error"],
         // very important ...
         "require-await": ["error"],
         // the /u flag will have the regexp engine parse code points instead of code units/surrogate pairs ... 
         "require-unicode-regexp": ["error"],
+        "spaced-comment": ["error", "always"],
+        // if this config is to be used with CJS modules ...
+        "strict": ["error"],
+        "symbol-description": ["error"],
         "vars-on-top": ["error"],
-        "wrap-iife": ["error", "inside", {
-            "functionPrototypeMethods": true
-        }],
         "yoda": ["error"],
-        // ----------------------- strict mode ----------------------------
-        "strict": ["warn"],
-        // ------------------------ variables -----------------------------
-        "init-declarations": ["error", "always"],
-        "no-label-var": ["error"],
-        // allow shadowing of built-ins global variables
-        "no-shadow": ["warn", {
-            "builtinGlobals": false,
-            "hoist": "all",
-            "allow": []
-        }],
-        "no-undef-init": ["error"],
-        "no-undefined": ["error"],
-        "no-use-before-define": ["error"],
-        // --------------------- stylistic issues -------------------------
+        // -------------------- layout & formatting -----------------------
+        "array-bracket-newline": ["warn", "consistent"],
         "array-bracket-spacing": ["warn", "always"],
+        "array-element-newline": ["warn", "consistent"],
+        "arrow-parens": ["error", "as-needed"],
+        "arrow-spacing": ["error"],
         "block-spacing": ["error", "always"],
         // maybe switch single-line to true later ... 
         "brace-style": ["error", "1tbs", {
@@ -187,144 +360,134 @@
         }],
         "comma-style": ["error", "last"],
         "computed-property-spacing": ["error", "never"],
-        "consistent-this": ["warn", "_this"],
+        "dot-location": ["error", "property"],
+        // ???
+        // "eol-last": ["warn", "always"],
         "func-call-spacing": ["error", "never"],
-        "func-name-matching": ["error", "always"],
-        // makes sense since we cill force the use of functions expressions ...
-        "func-names": ["error", "never"],
-        // the purpose is to prevent any function from being hoisted to the top of its scope ...
-        "func-style": ["error", "expression"],
+        // experiment with this ...
         "function-call-argument-newline": ["warn", "consistent"],
-        // keep this rule as-is, not flexible enough ...
-        "id-match": ["warn", "^[0-9a-zA-Z_$]+$", {
-            "properties": true,
-            "onlyDeclarations": false,
-            "ignoreDestructuring": true
+        "generator-star-spacing": ["error", {
+            "before": false,
+            "after": true
+        }],
+        // experiment with this ...
+        "implicit-arrow-linebreak": ["error", "beside"],
+        // 'Crockford' indentation ... fine tune this later
+        "indent": ["error", 4, {
+            "flatTernaryExpressions": false,
+            "ignoreComments": true
         }],
         "key-spacing": ["error", {
             "mode": "strict"
         }],
         "keyword-spacing": ["error"],
+        "linebreak-style": ["error", "unix"],
         "lines-between-class-members": ["error", "always"],
-        "max-depth": ["warn", {
-            "max": 4
+        "max-statements-per-line": ["error", {
+            // lower this to 2 ...
+            "max": 2
         }],
-        // note to self : exercise caution before upping this value ...
-        "max-nested-callbacks": ["error", {
-            "max": 4
-        }],
-        "max-statements-per-line": ["warn", {
-            "max": 3
-        }],
-        "new-parens": ["error"],
+        "multiline-ternary": ["error", "always-multiline"],
+        "new-parens": ["error", "always"],
         // making newline mandatory at each chained call ...
         "newline-per-chained-call": ["error"],
-        "no-array-constructor": ["error"],
-        // this rule will be upgraded to error, bitwise is only to be used in very specific cases ...  
-        "no-bitwise": ["error"],
-        "no-lonely-if": ["error"],
-        "no-multi-assign": ["error"],
-        "no-multiple-empty-lines": ["error"],
-        "no-negated-condition": ["error"],
-        "no-new-object": ["error"],
-        "no-trailing-spaces": ["error"],
-        "no-unneeded-ternary": ["warn", {
-            "defaultAssignment": true
+        "no-extra-parens": ["error", "all", {
+            "conditionalAssign": false,
+            "returnAssign": false,
+            "nestedBinaryExpressions": false,
+            "enforceForArrowConditionals": false
         }],
+        // enable this, fine tune later if needed ...
+        "no-multi-spaces": ["error"],
+        "no-multiple-empty-lines": ["error"],
+        "no-tabs": ["error"],
+        "no-trailing-spaces": ["error"],
         "no-whitespace-before-property": ["error"],
         "nonblock-statement-body-position": ["error", "below"],
+        // oof ...
         "object-curly-newline": ["error", {
             "ObjectExpression": {
                 "multiline": true,
                 "minProperties": 10,
                 "consistent": true
             },
-            "ObjectPattern": "never"
+            "ObjectPattern": "never",
+            // enable this, fine tune later if needed ...
+            "ImportDeclaration": {
+                "multiline": true,
+                "minProperties": 10,
+                "consistent": true
+            },
+            // enable this, fine tune later if needed ...
+            "ExportDeclaration": {
+                "multiline": true,
+                "minProperties": 10,
+                "consistent": true
+            }
         }],
-        "object-curly-spacing": ["warn"],
+        "object-curly-spacing": ["error"],
         // this rule remains as-is as there are very few exceptions to it ...  
         "object-property-newline": ["error", {
             "allowAllPropertiesOnSameLine": true
         }],
-        "one-var": ["error", "consecutive"],
-        "one-var-declaration-per-line": ["error", "always"],
-        "operator-assignment": ["warn", "always"],
         // force the use of end-of-line operators for multi-lines expressions ...
         "operator-linebreak": ["error", "after"],
-        // keeping this disabled on the side to (maye) fine tune later, but enabling it really removes some flexibility ...
+        // keeping this disabled on the side to (maybe) fine tune later, but enabling it really removes some flexibility ...
+        "padded-blocks": ["off", "always"],
         "padding-line-between-statements": ["off", {
             "blankLine": "always",
             "prev": "*",
             "next": ["if", "for", "class", "const", "do", "let", "return", "switch", "try", "var", "while"]
         }],
-        "prefer-exponentiation-operator": ["error"],
-        "prefer-object-spread": ["warn"],
-        "quote-props": ["error", "as-needed"],
-        "semi-spacing": ["error"],
+        "quotes": ["error", "backtick", {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+        }],
+        "rest-spread-spacing": ["error", "never"],
+        // pretend ASI does not exist hehe ...
+        "semi": ["error", "always"],
+        "semi-spacing": ["error", {
+            "before": false,
+            "after": true
+        }],
+        "semi-style": ["error", "last"],
         "space-before-blocks": ["error", "always"],
         "space-before-function-paren": ["error", "never"],
         "space-in-parens": ["error", "never"],
-        "space-infix-ops": ["error"],
+        "space-infix-ops": ["error", {
+            // original way of casting to int32 ...
+            "int32Hint": false
+        }],
         "space-unary-ops": ["error", {
             "words": true,
             "nonwords": false
         }],
-        "spaced-comment": ["error", "always"],
         "switch-colon-spacing": ["error", {
-            "after": true,
+            "after": false,
             "before": true
         }],
-        "template-tag-spacing": ["error"],
-        "unicode-bom": ["error"],
-        // ----------------------- ECMAScript 6 ---------------------------
-        "arrow-body-style": ["warn", "as-needed"],
-        "arrow-parens": ["error", "as-needed"],
-        "arrow-spacing": ["error"],
-        "generator-star-spacing": ["error", {
-            "before": true,
-            "after": false
-        }],
-        // enforces wrapping short ifs in parentheses ...
-        "no-confusing-arrow": ["error", {
-            "allowParens": true
-        }],
-        "no-duplicate-imports": ["error"],
-        "no-useless-computed-key": ["error", {
-            "enforceForClassMembers": true
-        }],
-        "no-useless-rename": ["error"],
-        "no-var": ["error"],
-        "object-shorthand": ["error", "consistent"],
-        "prefer-arrow-callback": ["warn"],
-        "prefer-const": ["warn", {
-            "destructuring": "all",
-            "ignoreReadBeforeAssign": false
-        }],
-        "prefer-numeric-literals": ["error"],
-        "prefer-rest-params": ["error"],
-        "prefer-spread": ["error"],
-        // downgrading to warn, sometimes exceptions improve code readability ...
-        "prefer-template": ["warn"],
-        "rest-spread-spacing": ["error"],
-        "symbol-description": ["warn"],
         "template-curly-spacing": ["error", "always"],
-        "yield-star-spacing": ["error", {
-            "before": true,
-            "after": false
+        "template-tag-spacing": ["error", "never"],
+        "unicode-bom": ["error", "never"],
+        "wrap-iife": ["error", "inside", {
+            "functionPrototypeMethods": true
         }],
+        "yield-star-spacing": ["error", {
+            "before": false,
+            "after": true
+        }],
+        // ================================================================
         // =============== Disable eslint:recommended rules ===============
-        // --------------------- possible errors --------------------------
+        // ================================================================
+        // --------------------- possible problems ------------------------
         "no-sparse-arrays": ["off"],
+        "no-unused-vars": ["warn"],
         // deprecated, but shows up in vscode after the node plugin install
         "no-process-exit": ["off"],
-        // --------------------- best practices ---------------------------
-        // ----------------------- strict mode ----------------------------
-        // ------------------------ variables -----------------------------
-        "no-unused-vars": ["warn"],
-        // --------------------- stylistic issues -------------------------
-        // ----------------------- ECMAScript 6 ---------------------------
+        // ================================================================
         // == Override default options for plugin:node/recommended rules ==
-        // --------------------- possible errors --------------------------
+        // ================================================================
+        // --------------------- possible problems ------------------------
         "node/handle-callback-err": ["error", "^(e|err|error\\w*)$"],
         // too bad callback name is not regex-configurable ...
         "node/no-callback-literal": ["error"],
@@ -334,8 +497,7 @@
         "node/no-new-require": ["error"],
         // CJS specific (__filename and __dirname are not supported in ESM)
         "node/no-path-concat": ["error"],
-        // --------------------- best practices ---------------------------
-        // --------------------- stylistic issues -------------------------
+        // ------------------------ suggestions ---------------------------
         // very important rule, update callbacks names list when necessary
         "node/callback-return": ["error", ["callback", "cb", "next"]],
         // CJS specific
@@ -374,14 +536,14 @@
         // those may be upgraded to error later, only a warn for now
         "node/prefer-promises/dns": ["warn"],
         "node/prefer-promises/fs": ["warn"],
-        // ============ Disable plugin:node/recommended rules =============        
-        // --------------------- possible errors --------------------------
+        // ================================================================
+        // ============ Disable plugin:node/recommended rules =============
+        // ================================================================
+        // -------------------- possible problems -------------------------
         // for the moment I prefer shell aliases + shebang over package.json bin field
         "node/shebang": ["off"],
         // unnecessary if errors are properly handled
         "node/no-process-exit": ["off"]
-        // --------------------- best practices ---------------------------
-        // --------------------- stylistic issues -------------------------
     },
     // Disable ESLint inline comments
     "noInlineConfig": false,
