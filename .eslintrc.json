@@ -5,7 +5,7 @@
         "browser": true
     },
     // Base configuration
-    "extends": ["eslint:recommended", "plugin:node/recommended"],
+    "extends": ["eslint:recommended", "plugin:node/recommended", "plugin:import/recommended"],
     "parserOptions": {
         "ecmaVersion": 13,
         // Update to ESM modules (import)
@@ -85,8 +85,8 @@
         }],
         "arrow-body-style": ["warn", "as-needed"],
         "block-scoped-var": ["error"],
-        // hmm ...
-        "capitalized-comments": ["error", "never"],
+        // too restrictive ...
+        "capitalized-comments": ["off", "never"],
         // this rule remains as-is as there are very few exceptions to it ...  
         "class-methods-use-this": ["error"],
         // keeping this at 20 but downgrading to warn, sometimes a high complexity threshold is required ...
@@ -101,7 +101,11 @@
         "default-case": ["error"],
         "default-case-last": ["error"],
         "default-param-last": ["error"],
-        "dot-notation": ["warn"],
+        // I have a policy of using bracket notation to access properties in objects
+        // created from JSON data, so I have to be a bit lax with this one ... TBC
+        "dot-notation": ["warn", {
+            "allowPattern": "^[a-z_]+$"
+        }],
         "eqeqeq": ["error", "always"],
         // I always use anonymous function expressions ...
         "func-name-matching": ["error", "always"],
@@ -202,11 +206,17 @@
         "no-lone-blocks": ["error"],
         "no-lonely-if": ["error"],
         "no-loop-func": ["error"],
-        // enable this rule and relax it a bit ...
-        "no-magic-numbers": ["error", {
+
+
+
+        // enable this rule and relax it a bit ... TBC
+        "no-magic-numbers": ["off", {
             "ignoreArrayIndexes": true,
             "ignoreDefaultValues": true
         }],
+
+
+
         "no-multi-assign": ["error"],
         "no-multi-str": ["error"],
         "no-negated-condition": ["error"],
@@ -252,7 +262,9 @@
         "no-shadow": ["warn", {
             "builtinGlobals": true,
             "hoist": "all",
-            "allow": [],
+            // allow some to comply with node.js recommendation of
+            // importing builtins that exist at the global scope...
+            "allow": ["Buffer", "process", "console", "TextDecoder", "TextEncoder", "URLSearchParams", "URL"],
             "ignoreOnInitialization": true
         }],
         // upgrade to error
@@ -298,7 +310,7 @@
             "destructuring": "any",
             "ignoreReadBeforeAssign": false
         }],
-        // thos may be fine tuned later ...
+        // this rule makes a case for using Array.prototype.at() instead of bracket notation ...
         "prefer-destructuring": ["warn", {
             "VariableDeclarator": {
                 "array": true,
@@ -382,7 +394,7 @@
         }],
         "keyword-spacing": ["error"],
         "linebreak-style": ["error", "unix"],
-        "lines-between-class-members": ["error", "always"],
+        "lines-between-class-members": ["warn", "always"],
         "max-statements-per-line": ["error", {
             // lower this to 2 ...
             "max": 2
