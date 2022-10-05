@@ -23,7 +23,9 @@
         // Lint scripts embedded in HTML pages
         "html",
         // additional set of rules for node.js
-        "node"
+        "node",
+        // validates modules imports and exports
+        "import"
     ],
     "settings": {
         // extensions of HTML files to be linted
