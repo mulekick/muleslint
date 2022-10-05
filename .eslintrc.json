@@ -208,17 +208,11 @@
         "no-lone-blocks": ["error"],
         "no-lonely-if": ["error"],
         "no-loop-func": ["error"],
-
-
-
-        // enable this rule and relax it a bit ... TBC
+        // too restrictive for the moment ... TBC
         "no-magic-numbers": ["off", {
             "ignoreArrayIndexes": true,
             "ignoreDefaultValues": true
         }],
-
-
-
         "no-multi-assign": ["error"],
         "no-multi-str": ["error"],
         "no-negated-condition": ["error"],
@@ -266,7 +260,18 @@
             "hoist": "all",
             // allow some to comply with node.js recommendation of
             // importing builtins that exist at the global scope...
-            "allow": ["Buffer", "process", "console", "TextDecoder", "TextEncoder", "URLSearchParams", "URL"],
+            "allow": [
+                "Buffer",
+                "process",
+                "console",
+                "TextDecoder",
+                "TextEncoder",
+                "URLSearchParams",
+                "URL",
+                // overlapping with DOM windows methods available as globals ...
+                "open",
+                "close"
+            ],
             "ignoreOnInitialization": true
         }],
         // upgrade to error
