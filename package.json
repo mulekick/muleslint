@@ -1,0 +1,57 @@
+{
+    "name": "@mulekick/eslint-config-muleslint",
+    "version": "1.0.0",
+    "description": "Mulekicks's base JS / Node ESLint config, following my personal standards 😁",
+    "main": "index.js",
+    "scripts": {
+        "test": "cd sample && npm i && test $(npx eslint script.js --quiet --format ../formatter.js) -eq 5 && rm -rf node_modules package-lock.json && exit 0 || rm -rf node_modules package-lock.json && exit 1",
+        "prepublishOnly": "npm test",
+        "postpublish": "git add . && git commit -m \"$npm_package_name: version $npm_package_version published on $(date +%F\\ %r)\" && git push -u origin master"
+    },
+    "exports": {
+        ".": "./index.js",
+        "./rules/core.disable.problems": "./rules/core.disable.problems.js",
+        "./rules/core.override.formatting": "./rules/core.override.formatting.js",
+        "./rules/core.override.problems": "./rules/core.override.problems.js",
+        "./rules/core.override.suggestions": "./rules/core.override.suggestions.js",
+        "./rules/node.disable.problems": "./rules/node.disable.problems.js",
+        "./rules/node.override.problems": "./rules/node.override.problems.js",
+        "./rules/node.override.suggestions": "./rules/node.override.suggestions.js",
+        "./package.json": "./package.json"
+    },
+    "peerDependencies": {
+        "eslint": "8.x",
+        "eslint-plugin-html": "7.x",
+        "eslint-plugin-node": "11.x",
+        "eslint-plugin-import": "2.x"
+    },
+    "devDependencies": {},    
+    "keywords": [        
+        "eslint",
+        "eslintconfig",
+        "config",
+        "javascript",
+        "es6",
+        "esm",
+        "strict mode",
+        "node"
+    ],
+    "engines": {
+        "node": ">=v18.12.1",
+        "npm": ">=8.15.1"
+    },
+    "os": [
+        "linux"
+    ],
+    "author": "mulekick <moolekick@gmail.com> (https://github.com/mulekick)",
+    "license": "MIT",
+    "repository": {
+    "type": "git",
+        "url": "git+https://github.com/mulekick/muleslint.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mulekick/muleslint/issues"
+    },
+    "homepage": "https://github.com/mulekick/muleslint"
+}
+    

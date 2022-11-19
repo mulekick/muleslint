@@ -1,0 +1,13 @@
+{
+    "name": "muleslint-sample",
+    "version": "1.0.0",
+    "description": "sample project to test config against",
+    "type": "module",
+    "devDependencies": {
+        "@mulekick/eslint-config-muleslint": ".."
+    },
+    "engines": {
+        "node": ">=16.16.0",
+        "npm": ">=8.15.1"
+    }
+}
