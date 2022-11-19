@@ -14,6 +14,9 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 ```json
 {"extends": "@mulekick/eslint-config-muleslint"}
 ```
+## Use it in your own project
+- ```npm install --save-dev @mulekick/eslint-config-muleslint```
+- be sure to add the above ```.eslintrc.json``` file in your project's root folder. 
 
 ## Configuration details
 
@@ -22,6 +25,7 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 - The use of modern Javascript features (ES6 and beyond) is enforced whenever possible
 - Extends [node plugin](https://github.com/mysticatea/eslint-plugin-node) recommended configuration (plugin:node/recommended)
 - Extends [import plugin](https://github.com/import-js/eslint-plugin-import) recommended configuration (plugin:import/recommended)
+- Uses [html plugin](https://github.com/BenoitZugmeyer/eslint-plugin-html) to lint JS code in HTML pages ```<script>``` tags
 - Enforces unix-style line breaks
 - Enforces [Crockford](https://www.crockford.com/code.html) indentation (4 spaces)
 - Enforces [ESM modules](https://nodejs.org/api/esm.html#modules-ecmascript-modules) use, therefore enforcing strict mode everywhere
