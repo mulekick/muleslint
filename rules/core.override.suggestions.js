@@ -10,6 +10,7 @@ module.exports = {
             setWithoutGet: true,
             enforceForClassMembers: true
         } ],
+        // keep this to warn to preserve some flexibility ...
         "arrow-body-style": [ `warn`, `as-needed` ],
         "block-scoped-var": [ `error` ],
         // too restrictive ...
@@ -27,10 +28,11 @@ module.exports = {
         curly: [ `warn`, `multi-or-nest`, `consistent` ],
         "default-case": [ `error` ],
         "default-case-last": [ `error` ],
+        // arguments with a default value must be last to allow flexible function calls ...
         "default-param-last": [ `error` ],
-        // I have a policy of using bracket notation to access properties in objects
-        // created from JSON data, so I have to be a bit lax with this one ... TBC
-        "dot-notation": [ `warn`, {
+        // I'm comfortable enough now to upgrade this to error ... 
+        "dot-notation": [ `error`, {
+            // fine tune this later to accomodate the very few exceptions.
             allowPattern: `^[a-z_]+$`
         } ],
         eqeqeq: [ `error`, `always` ],
@@ -144,16 +146,60 @@ module.exports = {
         // using builting static methods may be an alternative ...
         "no-new": [ `error` ],
         "no-new-func": [ `error` ],
+        // force object literal use for object declarations ...
         "no-new-object": [ `error` ],
         // disable instantiating wrappers for string, number and boolean ...
         "no-new-wrappers": [ `error` ],
         "no-octal-escape": [ `error` ],
-        // enforce strict policy regaring this pattern ...
-        "no-param-reassign": [ `error` ],
+        // prohibits overwriting function parameters ...
+        "no-param-reassign": [ `error`, {
+            // but allows mutating them since this is necessary in many cases (express responses etc)
+            props: false
+        } ],
         "no-proto": [ `error` ],
         // this may be fine tuned later ...
         "no-restricted-exports": [ `error`, {
             restrictedNamedExports: [ `default` ]
+        } ],
+        // airbnb did a great job on this one ...
+        "no-restricted-properties": [ `error`, {
+            object: `arguments`,
+            property: `callee`,
+            message: `arguments.callee is deprecated`
+        }, {
+            object: `global`,
+            property: `isFinite`,
+            message: `Please use Number.isFinite instead`
+        }, {
+            object: `self`,
+            property: `isFinite`,
+            message: `Please use Number.isFinite instead`
+        }, {
+            object: `window`,
+            property: `isFinite`,
+            message: `Please use Number.isFinite instead`
+        }, {
+            object: `global`,
+            property: `isNaN`,
+            message: `Please use Number.isNaN instead`
+        }, {
+            object: `self`,
+            property: `isNaN`,
+            message: `Please use Number.isNaN instead`
+        }, {
+            object: `window`,
+            property: `isNaN`,
+            message: `Please use Number.isNaN instead`
+        }, {
+            property: `__defineGetter__`,
+            message: `Please use Object.defineProperty instead.`
+        }, {
+            property: `__defineSetter__`,
+            message: `Please use Object.defineProperty instead.`
+        }, {
+            object: `Math`,
+            property: `pow`,
+            message: `Use the exponentiation operator (**) instead.`
         } ],
         // useful for browser scripts ...
         "no-restricted-globals": [ `error`, {
@@ -163,13 +209,22 @@ module.exports = {
             name: `error`,
             message: `Use local error parameter instead.`
         } ],
-        // experiment with this rule ...
-        "no-restricted-syntax": [ `warn`, {
+        // let's give the airbnb "loops are bad" thing a try ...
+        "no-restricted-syntax": [ `error`, {
             selector: `WithStatement`,
-            message: `with syntax is obsolete and confusing.`
+            message: `with is disallowed in strict mode because it makes code impossible to predict and optimize.`
+        }, {
+            selector: `LabeledStatement`,
+            message: `labels make code confusing and hard to maintain and understand.`
         }, {
             selector: `SequenceExpression`,
             message: `use only for loops initializations and afterthoughts.`
+        }, {
+            selector: `ForInStatement`,
+            message: `for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.`,
+        }, {
+            selector: `ForOfStatement`,
+            message: `iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them. Separately, loops should be avoided in favor of array iterations.`,
         } ],
         // upgrade to error to enforce wrapping of assignments in parentheses ...
         "no-return-assign": [ `error`, `except-parens` ],
@@ -203,10 +258,12 @@ module.exports = {
         "no-throw-literal": [ `error` ],
         "no-undef-init": [ `error` ],
         "no-undefined": [ `error` ],
-        // I have to get better at namiçng things ...
-        "no-underscore-dangle": [ `warn` ],
-        "no-unneeded-ternary": [ `warn`, {
-            defaultAssignment: true
+        // I have to get better at naming things ...
+        "no-underscore-dangle": [ `error` ],
+        // upgrade this to error ...
+        "no-unneeded-ternary": [ `error`, {
+            // let's flag this to enforce the use of the || operator ...
+            defaultAssignment: false
         } ],
         // enforce the use of semicolons at the end of expressions ...
         "no-unused-expressions": [ `error`, {
@@ -232,14 +289,28 @@ module.exports = {
             terms: [ `!!!` ],
             location: `anywhere`
         } ],
-        "object-shorthand": [ `error`, `consistent` ],
+        // fine tuning ...
+        "object-shorthand": [ `error`, `always`, {
+            // reporting string literal method names is pointless
+            avoidQuotes: false,
+            // we're not supposed to use ES5 constructor functions anymore thanks to babel, so let's report these too ...
+            ignoreConstructors: false,
+            // to me, enforcing the use of shorthand syntax implies that arrow functions must be explicit and visible ...
+            avoidExplicitReturnArrows: false
+        } ],
         "one-var": [ `error`, `consecutive` ],
         "one-var-declaration-per-line": [ `error`, `always` ],
         "operator-assignment": [ `warn`, `always` ],
-        "prefer-arrow-callback": [ `warn` ],
-        "prefer-const": [ `warn`, {
-            // see if 'any' is a viable option ...
+        "prefer-arrow-callback": [ `warn`, {
+            // no named functions should be used as callbacks (variables should) ...
+            "allowNamedFunctions": false,
+            "allowUnboundThis": true
+        } ],
+        // upgrade to error, in the event mixing const/let on destructuring is required, manage let and const in 2 separate statement ...
+        "prefer-const": [ `error`, {
+            // be restrictive ...
             destructuring: `any`,
+            // experiment the 'no read before assigment' rule, TBC if too restrictive ...
             ignoreReadBeforeAssign: false
         } ],
         // this rule makes a case for using Array.prototype.at() instead of bracket notation ...
@@ -266,12 +337,15 @@ module.exports = {
         "prefer-regex-literals": [ `error`, {
             disallowRedundantWrapping: true
         } ],
+        // rest parameters for functions taking a variadic number of arguments ...
         "prefer-rest-params": [ `error` ],
+        // and use spread syntax to call said functions ...
         "prefer-spread": [ `error` ],
         // downgrading to warn, sometimes exceptions improve code readability ...
         "prefer-template": [ `warn` ],
         "quote-props": [ `error`, `as-needed`, {
             keywords: true,
+            unnecessary: true,
             numbers: true
         } ],
         // failsafe when using parseInt() ...

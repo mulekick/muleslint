@@ -20,7 +20,8 @@ module.exports = {
             checkLoops: false
         } ],
         "no-constructor-return": [ `error` ],
-        "no-duplicate-imports": [ `error` ],
+        // replaced by "import/no-duplicates" which extends the recommended ruleset for the import plugin ...
+        // "no-duplicate-imports": [ `error` ],
         "no-empty-pattern": [ `error` ],
         "no-inner-declarations": [ `error`, `both` ],
         // this rule remains as-is as there are very few exceptions to it ...

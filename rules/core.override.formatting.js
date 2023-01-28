@@ -6,10 +6,15 @@
 module.exports = {
     rules: {
         "array-bracket-newline": [ `warn`, `consistent` ],
-        "array-bracket-spacing": [ `warn`, `always` ],
+        // upgrade this to error ...
+        "array-bracket-spacing": [ `error`, `always` ],
         "array-element-newline": [ `warn`, `consistent` ],
         "arrow-parens": [ `error`, `as-needed` ],
-        "arrow-spacing": [ `error` ],
+        // arrow functions spacing ...
+        "arrow-spacing": [ `error`, {
+            "before": true,
+            "after": true
+        } ],
         "block-spacing": [ `error`, `always` ],
         // maybe switch single-line to true later ...
         "brace-style": [ `error`, `1tbs`, {
@@ -21,28 +26,34 @@ module.exports = {
             after: true
         } ],
         "comma-style": [ `error`, `last` ],
+        // keep this on 'never' to distinguish from arrays ...
         "computed-property-spacing": [ `error`, `never` ],
         "dot-location": [ `error`, `property` ],
-        // ???
-        // "eol-last": ["warn", "always"],
+        // no new lines at the end of files ...
+        "eol-last": ["error", "never"],
         "func-call-spacing": [ `error`, `never` ],
         // experiment with this ...
         "function-call-argument-newline": [ `warn`, `consistent` ],
+        "function-paren-newline": [ `error`, `multiline` ],
         "generator-star-spacing": [ `error`, {
             before: false,
             after: true
         } ],
         // experiment with this ...
         "implicit-arrow-linebreak": [ `error`, `beside` ],
-        // 'Crockford' indentation ... fine tune this later
+        // enforce 'Crockford' indentation ...
         indent: [ `error`, 4, {
+            // the default values for the multitude of available options sound good until proved otherwise ...
             flatTernaryExpressions: false,
             ignoreComments: true
         } ],
         "key-spacing": [ `error`, {
             mode: `strict`
         } ],
-        "keyword-spacing": [ `error` ],
+        "keyword-spacing": [ `error`, {
+            before: true,
+            after: true,
+        } ],
         "linebreak-style": [ `error`, `unix` ],
         "lines-between-class-members": [ `warn`, `always` ],
         "max-statements-per-line": [ `error`, {
@@ -52,7 +63,10 @@ module.exports = {
         "multiline-ternary": [ `error`, `always-multiline` ],
         "new-parens": [ `error`, `always` ],
         // making newline mandatory at each chained call ...
-        "newline-per-chained-call": [ `error` ],
+        "newline-per-chained-call": [ `error`, {
+            // 2 chained calls max on the same line ...
+            "ignoreChainWithDepth": 2
+        } ],
         "no-extra-parens": [ `error`, `all`, {
             conditionalAssign: false,
             returnAssign: false,
@@ -101,6 +115,7 @@ module.exports = {
             prev: `*`,
             next: [ `if`, `for`, `class`, `const`, `do`, `let`, `return`, `switch`, `try`, `var`, `while` ]
         } ],
+        // this rule is on of the most important one to me and changing it would require serious counter arguments about performance ...
         quotes: [ `error`, `backtick`, {
             avoidEscape: true,
             allowTemplateLiterals: true
@@ -128,6 +143,7 @@ module.exports = {
             after: false,
             before: true
         } ],
+        // use spaces in template literals and don't use in JSX expressions ...
         "template-curly-spacing": [ `error`, `always` ],
         "template-tag-spacing": [ `error`, `never` ],
         "unicode-bom": [ `error`, `never` ],
