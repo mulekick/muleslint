@@ -1,6 +1,6 @@
 {
     "name": "@mulekick/eslint-config-muleslint",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Mulekicks's base JS / Node ESLint config, following my personal standards 😁",
     "main": "index.js",
     "scripts": {
