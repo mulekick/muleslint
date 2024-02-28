@@ -1,5 +1,12 @@
 # My ESLint configuration
 
+![GitHub package.json version](https://img.shields.io/github/package-json/v/mulekick/muleslint)
+![GitHub License](https://img.shields.io/github/license/mulekick/muleslint)
+![Last Commit](https://img.shields.io/github/last-commit/mulekick/muleslint)
+![NPM Version](https://img.shields.io/npm/v/@mulekick/eslint-config-muleslint)
+![NPM Downloads](https://img.shields.io/npm/dt/@mulekick/eslint-config-muleslint)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@mulekick/eslint-config-muleslint)](https://socket.dev/npm/package/@mulekick/eslint-config-muleslint)
+
 I use the ESLint extension on Visual Studio code in my day-to day coding activities. I find ESLint to be of a great help to write some proper, clean-cut ES6 code, avoid errors and enforce best practices. Here is the configuration I use to lint my ```*.js``` and  ```*.ts``` files, available as a [shareable config](https://www.npmjs.com/package/@mulekick/eslint-config-muleslint).
 
 ## How I use ESLint in my dev environment
