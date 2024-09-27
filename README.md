@@ -21,7 +21,7 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 - A minimal ```eslint.config.js``` file included in the project's root folder :
 
 ```js
-import muleslint from "@mulekick/eslint-config-flat-sample";
+import muleslint from "@mulekick/eslint-config-muleslint";
 export default muleslint;
 ```
 ## Use it in your own project
