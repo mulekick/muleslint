@@ -41,7 +41,7 @@ export default {
     // experiment with this ...
     "@stylistic/implicit-arrow-linebreak": [ `error`, `beside` ],
     // enforce 'Crockford' indentation ...
-    indent: [ `error`, 4, {
+    "@stylistic/indent": [ `error`, 4, {
         // the default values for the multitude of available options sound good until proved otherwise ...
         flatTernaryExpressions: false,
         ignoreComments: true
@@ -118,13 +118,18 @@ export default {
         next: [ `if`, `for`, `class`, `const`, `do`, `let`, `return`, `switch`, `try`, `var`, `while` ]
     } ],
     // this rule is on of the most important one to me and changing it would require serious counter arguments about performance ...
-    quotes: [ `error`, `backtick`, {
+    "@stylistic/quotes": [ `error`, `backtick`, {
         avoidEscape: true,
         allowTemplateLiterals: true
     } ],
+    "@stylistic/quote-props": [ `error`, `as-needed`, {
+        keywords: true,
+        unnecessary: true,
+        numbers: true
+    } ],
     "@stylistic/rest-spread-spacing": [ `error`, `never` ],
     // pretend ASI does not exist hehe ...
-    semi: [ `error`, `always` ],
+    "@stylistic/semi": [ `error`, `always` ],
     "@stylistic/semi-spacing": [ `error`, {
         before: false,
         after: true

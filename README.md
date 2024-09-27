@@ -22,6 +22,7 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 
 ```js
 import muleslint from "@mulekick/eslint-config-muleslint";
+// eslint-disable-next-line node/no-missing-import
 import typescript from "typescript-eslint";
 
 // .eslintignore doesn't work with flat configs
@@ -38,15 +39,16 @@ export default typescript.config(...muleslint, {
 - It extends the following configurations :
 
 | configuration                              | description                                                                                                                                                               |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------    |
-| ```eslint.configs.recommended```           | core [eslint](https://eslint.org/) recommended configuration for ```*.js``` and ```*.ts``` files                                                                          |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ```eslint.configs.recommended```           | core [eslint](https://eslint.org/) recommended configuration                                                                                                              |
+| ```stylistic.configs.recommended```        | recommended configuration for [stylistic-related](https://eslint.style/guide/why) eslint rules                                                                            |
 | ```typescript.configs.strictTypeChecked``` | [typescript-eslint](https://typescript-eslint.io) strict configuration with [type-checked linting](https://typescript-eslint.io/getting-started/typed-linting) enabled 🤖 |
-| ```react.configs.recommended```            | recommended configuration from the eslint [react plugin](https://www.npmjs.com/package/eslint-plugin-react)                 |
+| ```react.configs.recommended```            | recommended configuration from the eslint [react plugin](https://www.npmjs.com/package/eslint-plugin-react)                                                               |
 | ```plugin:node/recommended```              | recommended configuration from the eslint [node plugin](https://github.com/mysticatea/eslint-plugin-node)                                                                 |
 | ```plugin:import/recommended```            | recommended configuration from the eslint [import plugin](https://github.com/import-js/eslint-plugin-import)                                                              |
 
 - It also uses the [html plugin](https://github.com/BenoitZugmeyer/eslint-plugin-html) to lint JS code in HTML pages ```<script>``` tags.
-- Quite a few of the ```eslint.configs.recommended``` recommended options are overriden 😁
+- Quite a few of the ```eslint.configs.recommended``` and ```stylistic.configs.recommended``` options are overriden 😁
 - The use of modern ECMA features (ES6 and beyond) is enforced whenever possible.
 - The use of [Crockford](https://www.crockford.com/code.html) indentation (4 spaces) and unix-style line breaks is enforced as well.
-- [ESM modules](https://nodejs.org/api/esm.html#modules-ecmascript-modules) use is enforced as well, therefore making strict mode mandatory everywhere 👍
+- [ESM modules](https://nodejs.org/api/esm.html#modules-ecmascript-modules) use is enforced too, therefore making strict mode mandatory everywhere 👍

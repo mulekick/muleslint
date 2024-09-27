@@ -394,11 +394,6 @@ export default {
     "prefer-spread": [ `error` ],
     // downgrading to warn, sometimes exceptions improve code readability ...
     "prefer-template": [ `warn` ],
-    "quote-props": [ `error`, `as-needed`, {
-        keywords: true,
-        unnecessary: true,
-        numbers: true
-    } ],
     // failsafe when using parseInt() ...
     radix: [ `error` ],
     // very important ...
