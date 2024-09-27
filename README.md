@@ -22,7 +22,12 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 
 ```js
 import muleslint from "@mulekick/eslint-config-muleslint";
-export default muleslint;
+import typescript from "typescript-eslint";
+
+// .eslintignore doesn't work with flat configs
+export default typescript.config(...muleslint, {
+    ignores: [ `**/node_modules/**`, `**/dist/**`, `**/build/**` ]
+});
 ```
 ## Use it in your own project
 - Install with ```npx install-peerdeps --dev @mulekick/eslint-config-muleslint```.
