@@ -1,13 +1,11 @@
-"use strict";
 // ================================================================
 // =============== Disable eslint:recommended rules ===============
 // ================================================================
 // --------------------- possible problems ------------------------
-module.exports = {
-    rules: {
-        "no-sparse-arrays": [ `off` ],
-        "no-unused-vars": [ `warn` ],
-        // deprecated, but shows up in vscode after the node plugin install
-        "no-process-exit": [ `off` ]
-    }
+export default {
+    "no-sparse-arrays": [ `off` ],
+    // as annoying as this rule can be I think it's better to keep the warning ...
+    // use the ts extension rule
+    "no-unused-vars": [ `off` ],
+    "@typescript-eslint/no-unused-vars": [ `warn` ]
 };

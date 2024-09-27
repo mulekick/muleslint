@@ -1,158 +1,160 @@
-"use strict";
 // ================================================================
 // ===== Override default options for eslint:recommended rules ====
 // ================================================================
 // -------------------- layout & formatting -----------------------
-module.exports = {
-    rules: {
-        "array-bracket-newline": [ `warn`, `consistent` ],
-        // upgrade this to error ...
-        "array-bracket-spacing": [ `error`, `always` ],
-        "array-element-newline": [ `warn`, `consistent` ],
-        "arrow-parens": [ `error`, `as-needed` ],
-        // arrow functions spacing ...
-        "arrow-spacing": [ `error`, {
-            "before": true,
-            "after": true
-        } ],
-        "block-spacing": [ `error`, `always` ],
-        // maybe switch single-line to true later ...
-        "brace-style": [ `error`, `1tbs`, {
-            allowSingleLine: true
-        } ],
-        "comma-dangle": [ `error`, `never` ],
-        "comma-spacing": [ `error`, {
-            before: false,
-            after: true
-        } ],
-        "comma-style": [ `error`, `last` ],
-        // keep this on 'never' to distinguish from arrays ...
-        "computed-property-spacing": [ `error`, `never` ],
-        "dot-location": [ `error`, `property` ],
-        // no new lines at the end of files ...
-        "eol-last": ["error", "never"],
-        "func-call-spacing": [ `error`, `never` ],
-        // experiment with this ...
-        "function-call-argument-newline": [ `warn`, `consistent` ],
-        "function-paren-newline": [ `error`, `multiline` ],
-        "generator-star-spacing": [ `error`, {
-            before: false,
-            after: true
-        } ],
-        // experiment with this ...
-        "implicit-arrow-linebreak": [ `error`, `beside` ],
-        // enforce 'Crockford' indentation ...
-        indent: [ `error`, 4, {
-            // the default values for the multitude of available options sound good until proved otherwise ...
-            flatTernaryExpressions: false,
-            ignoreComments: true
-        } ],
-        "key-spacing": [ `error`, {
-            mode: `strict`
-        } ],
-        "keyword-spacing": [ `error`, {
-            before: true,
-            after: true,
-        } ],
-        "linebreak-style": [ `error`, `unix` ],
-        "lines-between-class-members": [ `warn`, `always` ],
-        "max-statements-per-line": [ `error`, {
-            // lower this to 2 ...
-            max: 2
-        } ],
-        "multiline-ternary": [ `error`, `always-multiline` ],
-        "new-parens": [ `error`, `always` ],
-        // making newline mandatory at each chained call ...
-        "newline-per-chained-call": [ `error`, {
-            // 2 chained calls max on the same line ...
-            "ignoreChainWithDepth": 2
-        } ],
-        "no-extra-parens": [ `error`, `all`, {
-            conditionalAssign: false,
-            returnAssign: false,
-            nestedBinaryExpressions: false,
-            enforceForArrowConditionals: false
-        } ],
-        // enable this, fine tune later if needed ...
-        "no-multi-spaces": [ `error` ],
-        "no-multiple-empty-lines": [ `error` ],
-        "no-tabs": [ `error` ],
-        "no-trailing-spaces": [ `error` ],
-        "no-whitespace-before-property": [ `error` ],
-        "nonblock-statement-body-position": [ `error`, `below` ],
-        // oof ...
-        "object-curly-newline": [ `error`, {
-            ObjectExpression: {
-                multiline: true,
-                minProperties: 10,
-                consistent: true
-            },
-            ObjectPattern: `never`,
-            // enable this, fine tune later if needed ...
-            ImportDeclaration: {
-                multiline: true,
-                minProperties: 10,
-                consistent: true
-            },
-            // enable this, fine tune later if needed ...
-            ExportDeclaration: {
-                multiline: true,
-                minProperties: 10,
-                consistent: true
-            }
-        } ],
-        "object-curly-spacing": [ `error` ],
-        // this rule remains as-is as there are very few exceptions to it ...
-        "object-property-newline": [ `error`, {
-            allowAllPropertiesOnSameLine: true
-        } ],
-        // force the use of end-of-line operators for multi-lines expressions ...
-        "operator-linebreak": [ `error`, `after` ],
-        // keeping this disabled on the side to (maybe) fine tune later, but enabling it really removes some flexibility ...
-        "padded-blocks": [ `off`, `always` ],
-        "padding-line-between-statements": [ `off`, {
-            blankLine: `always`,
-            prev: `*`,
-            next: [ `if`, `for`, `class`, `const`, `do`, `let`, `return`, `switch`, `try`, `var`, `while` ]
-        } ],
-        // this rule is on of the most important one to me and changing it would require serious counter arguments about performance ...
-        quotes: [ `error`, `backtick`, {
-            avoidEscape: true,
-            allowTemplateLiterals: true
-        } ],
-        "rest-spread-spacing": [ `error`, `never` ],
-        // pretend ASI does not exist hehe ...
-        semi: [ `error`, `always` ],
-        "semi-spacing": [ `error`, {
-            before: false,
-            after: true
-        } ],
-        "semi-style": [ `error`, `last` ],
-        "space-before-blocks": [ `error`, `always` ],
-        "space-before-function-paren": [ `error`, `never` ],
-        "space-in-parens": [ `error`, `never` ],
-        "space-infix-ops": [ `error`, {
-            // original way of casting to int32 ...
-            int32Hint: false
-        } ],
-        "space-unary-ops": [ `error`, {
-            words: true,
-            nonwords: false
-        } ],
-        "switch-colon-spacing": [ `error`, {
-            after: false,
-            before: true
-        } ],
-        // use spaces in template literals and don't use in JSX expressions ...
-        "template-curly-spacing": [ `error`, `always` ],
-        "template-tag-spacing": [ `error`, `never` ],
-        "unicode-bom": [ `error`, `never` ],
-        "wrap-iife": [ `error`, `inside`, {
-            functionPrototypeMethods: true
-        } ],
-        "yield-star-spacing": [ `error`, {
-            before: false,
-            after: true
-        } ]
-    }
+export default {
+    "@stylistic/array-bracket-newline": [ `warn`, `consistent` ],
+    // upgrade this to error ...
+    "@stylistic/array-bracket-spacing": [ `error`, `always` ],
+    "@stylistic/array-element-newline": [ `warn`, `consistent` ],
+    "@stylistic/arrow-parens": [ `error`, `as-needed` ],
+    // arrow functions spacing ...
+    "@stylistic/arrow-spacing": [ `error`, {
+        before: true,
+        after: true
+    } ],
+    "@stylistic/block-spacing": [ `error`, `always` ],
+    // maybe switch single-line to true later ...
+    "@stylistic/brace-style": [ `error`, `1tbs`, {
+        allowSingleLine: true
+    } ],
+    "@stylistic/comma-dangle": [ `error`, `never` ],
+    "@stylistic/comma-spacing": [ `error`, {
+        before: false,
+        after: true
+    } ],
+    "@stylistic/comma-style": [ `error`, `last` ],
+    // keep this on 'never' to distinguish from arrays ...
+    "@stylistic/computed-property-spacing": [ `error`, `never` ],
+    "@stylistic/dot-location": [ `error`, `property` ],
+    // no new lines at the end of files ...
+    "@stylistic/eol-last": [ `error`, `never` ],
+    "@stylistic/func-call-spacing": [ `error`, `never` ],
+    // experiment with this ...
+    "@stylistic/function-call-argument-newline": [ `warn`, `consistent` ],
+    // no valid reason to ever change that setting ...
+    "@stylistic/function-paren-newline": [ `error`, `multiline` ],
+    "@stylistic/generator-star-spacing": [ `error`, {
+        before: false,
+        after: true
+    } ],
+    // experiment with this ...
+    "@stylistic/implicit-arrow-linebreak": [ `error`, `beside` ],
+    // enforce 'Crockford' indentation ...
+    indent: [ `error`, 4, {
+        // the default values for the multitude of available options sound good until proved otherwise ...
+        flatTernaryExpressions: false,
+        ignoreComments: true
+    } ],
+    "@stylistic/key-spacing": [ `error`, {
+        mode: `strict`
+    } ],
+    "@stylistic/keyword-spacing": [ `error`, {
+        before: true,
+        after: true
+    } ],
+    "@stylistic/linebreak-style": [ `error`, `unix` ],
+    // no newline after single line class members ...
+    "@stylistic/lines-between-class-members": [ `warn`, `always`, {
+        exceptAfterSingleLine: true
+    } ],
+    // this rule remains as is as there is very few exceptions to it ...
+    "@stylistic/max-statements-per-line": [ `error`, {
+        max: 2
+    } ],
+    "@stylistic/multiline-ternary": [ `error`, `always-multiline` ],
+    "@stylistic/new-parens": [ `error`, `always` ],
+    // making newline mandatory at each chained call ...
+    "@stylistic/newline-per-chained-call": [ `error`, {
+        // 3 chained calls max on the same line ...
+        ignoreChainWithDepth: 3
+    } ],
+    "@stylistic/no-extra-parens": [ `error`, `all`, {
+        conditionalAssign: false,
+        returnAssign: false,
+        nestedBinaryExpressions: false,
+        enforceForArrowConditionals: false
+    } ],
+    // downgrade to warn (inline comments, matrixes representation etc) ...
+    "@stylistic/no-multi-spaces": [ `warn` ],
+    // other options remain as is ...
+    "@stylistic/no-multiple-empty-lines": [ `error` ],
+    "@stylistic/no-tabs": [ `error` ],
+    "@stylistic/no-trailing-spaces": [ `error` ],
+    "@stylistic/no-whitespace-before-property": [ `error` ],
+    "@stylistic/nonblock-statement-body-position": [ `error`, `below` ],
+    // downgrade to 5 to improve code readability ...
+    "@stylistic/object-curly-newline": [ `error`, {
+        ObjectExpression: {
+            multiline: true,
+            minProperties: 5,
+            consistent: true
+        },
+        // except for destructuring patterns ...
+        ObjectPattern: `never`,
+        ImportDeclaration: {
+            multiline: true,
+            minProperties: 5,
+            consistent: true
+        },
+        ExportDeclaration: {
+            multiline: true,
+            minProperties: 5,
+            consistent: true
+        }
+    } ],
+    "@stylistic/object-curly-spacing": [ `error` ],
+    // this rule remains as-is as there are very few exceptions to it ...
+    "@stylistic/object-property-newline": [ `error`, {
+        allowAllPropertiesOnSameLine: true
+    } ],
+    // force the use of end-of-line operators for multi-lines expressions ...
+    "@stylistic/operator-linebreak": [ `error`, `after` ],
+    // keeping this disabled on the side to (maybe) fine tune later, but enabling it really removes some flexibility ...
+    "@stylistic/padded-blocks": [ `off`, `always` ],
+    "@stylistic/padding-line-between-statements": [ `off`, {
+        blankLine: `always`,
+        prev: `*`,
+        next: [ `if`, `for`, `class`, `const`, `do`, `let`, `return`, `switch`, `try`, `var`, `while` ]
+    } ],
+    // this rule is on of the most important one to me and changing it would require serious counter arguments about performance ...
+    quotes: [ `error`, `backtick`, {
+        avoidEscape: true,
+        allowTemplateLiterals: true
+    } ],
+    "@stylistic/rest-spread-spacing": [ `error`, `never` ],
+    // pretend ASI does not exist hehe ...
+    semi: [ `error`, `always` ],
+    "@stylistic/semi-spacing": [ `error`, {
+        before: false,
+        after: true
+    } ],
+    "@stylistic/semi-style": [ `error`, `last` ],
+    "@stylistic/space-before-blocks": [ `error`, `always` ],
+    "@stylistic/space-before-function-paren": [ `error`, `never` ],
+    "@stylistic/space-in-parens": [ `error`, `never` ],
+    "@stylistic/space-infix-ops": [ `error`, {
+        // original way of casting to int32 ...
+        int32Hint: false
+    } ],
+    "@stylistic/space-unary-ops": [ `error`, {
+        words: true,
+        nonwords: false
+    } ],
+    "@stylistic/switch-colon-spacing": [ `error`, {
+        after: false,
+        before: true
+    } ],
+    // use spaces in template literals and don't use in JSX expressions ...
+    "@stylistic/template-curly-spacing": [ `error`, `always` ],
+    "@stylistic/template-tag-spacing": [ `error`, `never` ],
+    // not included in stylistic (broken)
+    "unicode-bom": [ `error`, `never` ],
+    "@stylistic/wrap-iife": [ `error`, `inside`, {
+        functionPrototypeMethods: true
+    } ],
+    "@stylistic/yield-star-spacing": [ `error`, {
+        before: false,
+        after: true
+    } ]
 };
