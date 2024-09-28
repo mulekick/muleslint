@@ -46,6 +46,16 @@ export default {
         flatTernaryExpressions: false,
         ignoreComments: true
     } ],
+    // downgrade to warn until the correct pattern is found
+    "@stylistic/jsx-closing-tag-location": [ `warn` ],
+    // enforce no space for object literals and spaces for jsx attributes ...
+    "@stylistic/jsx-curly-spacing": [ `warn`, {
+        when: `always`,
+        attributes: true,
+        children: true
+    } ],
+    // turn this off for it conflicts with core no-extra-parens ...
+    "@stylistic/jsx-wrap-multilines": [ `off` ],
     "@stylistic/key-spacing": [ `error`, {
         mode: `strict`
     } ],
@@ -61,6 +71,18 @@ export default {
     // this rule remains as is as there is very few exceptions to it ...
     "@stylistic/max-statements-per-line": [ `error`, {
         max: 2
+    } ],
+    // enforce style consistency for ts interfaces declarations ...
+    "@stylistic/member-delimiter-style": [ `error`, {
+        multiline: {
+            delimiter: `semi`,
+            requireLast: true
+        },
+        singleline: {
+            delimiter: `semi`,
+            requireLast: false
+        },
+        multilineDetection: `brackets`
     } ],
     "@stylistic/multiline-ternary": [ `error`, `always-multiline` ],
     "@stylistic/new-parens": [ `error`, `always` ],
@@ -83,27 +105,28 @@ export default {
     "@stylistic/no-trailing-spaces": [ `error` ],
     "@stylistic/no-whitespace-before-property": [ `error` ],
     "@stylistic/nonblock-statement-body-position": [ `error`, `below` ],
-    // downgrade to 5 to improve code readability ...
+    // downgrade to 6 to improve code readability ...
     "@stylistic/object-curly-newline": [ `error`, {
         ObjectExpression: {
             multiline: true,
-            minProperties: 5,
+            minProperties: 6,
             consistent: true
         },
         // except for destructuring patterns ...
         ObjectPattern: `never`,
         ImportDeclaration: {
             multiline: true,
-            minProperties: 5,
+            minProperties: 6,
             consistent: true
         },
         ExportDeclaration: {
             multiline: true,
-            minProperties: 5,
+            minProperties: 6,
             consistent: true
         }
     } ],
-    "@stylistic/object-curly-spacing": [ `error` ],
+    // enforce no spacing for object literals ...
+    "@stylistic/object-curly-spacing": [ `error`, `never` ],
     // this rule remains as-is as there are very few exceptions to it ...
     "@stylistic/object-property-newline": [ `error`, {
         allowAllPropertiesOnSameLine: true
@@ -153,7 +176,12 @@ export default {
     // use spaces in template literals and don't use in JSX expressions ...
     "@stylistic/template-curly-spacing": [ `error`, `always` ],
     "@stylistic/template-tag-spacing": [ `error`, `never` ],
-    // not included in stylistic (broken)
+    // make type annotations pattern consistent with the key-spacing rule ...
+    "@stylistic/type-annotation-spacing": [ `error`, {
+        before: false,
+        after: true
+    } ],
+    // !!! not included in stylistic (broken) !!!
     "unicode-bom": [ `error`, `never` ],
     "@stylistic/wrap-iife": [ `error`, `inside`, {
         functionPrototypeMethods: true
