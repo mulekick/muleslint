@@ -1,6 +1,6 @@
 {
     "name": "@mulekick/eslint-config-muleslint",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "description": "Mulekicks's base JS / TS / React / Node ESLint config, following my personal standards 😁",
     "type": "module",
     "main": "eslint.config.js",
@@ -63,10 +63,10 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mulekick/eslint-config-flat-sample.git"
+        "url": "git+https://github.com/mulekick/muleslint.git"
     },
     "bugs": {
-        "url": "https://github.com/mulekick/eslint-config-flat-sample/issues"
+        "url": "https://github.com/mulekick/muleslint/issues"
     },
-    "homepage": "https://github.com/mulekick/eslint-config-flat-sample"
+    "homepage": "https://github.com/mulekick/muleslint"
 }
