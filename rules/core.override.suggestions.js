@@ -23,7 +23,7 @@ export default {
         max: 30
     } ],
     // use the ts extension rule
-    "consistent-return": [ `error` ],
+    "consistent-return": [ `off` ],
     "@typescript-eslint/consistent-return": [ `error` ],
     // clever use of, bind, call and apply should avoid such things ...
     "consistent-this": [ `warn`, `__this__` ],
@@ -118,8 +118,6 @@ export default {
     "no-confusing-arrow": [ `error`, {
         allowParens: true
     } ],
-    // downgrade to warn (conflicts w/ node callback-return)
-    "@typescript-eslint/no-confusing-void-expression": [ `warn` ],
     // seldomly used, so it's worthy of a warn ...
     "no-continue": [ `warn` ],
     // I give this a try ...
@@ -189,8 +187,6 @@ export default {
         props: false
     } ],
     "no-proto": [ `error` ],
-    // improves DX sometimes when code is organized completely around types ...
-    "@typescript-eslint/no-redundant-type-constituents": [ `warn` ],
     // this may be fine tuned later ...
     "no-restricted-exports": [ `error`, {
         restrictedNamedExports: [ `default` ]
@@ -304,8 +300,6 @@ export default {
     "no-undef-init": [ `off` ],
     // I have to get better at naming things ...
     "no-underscore-dangle": [ `error` ],
-    // improves DX sometimes when code is organized completely around types ...
-    "@typescript-eslint/no-unnecessary-type-arguments": [ `warn` ],
     // upgrade this to error ...
     "no-unneeded-ternary": [ `error`, {
         // let's flag this to enforce the use of the || operator ...

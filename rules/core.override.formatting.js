@@ -13,7 +13,8 @@ export default {
         before: true,
         after: true
     } ],
-    "@stylistic/block-spacing": [ `error`, `always` ],
+    // align this w/ object-curly-spacing for consistency ...
+    "@stylistic/block-spacing": [ `error`, `never` ],
     // maybe switch single-line to true later ...
     "@stylistic/brace-style": [ `error`, `1tbs`, {
         allowSingleLine: true
@@ -46,14 +47,26 @@ export default {
         flatTernaryExpressions: false,
         ignoreComments: true
     } ],
+    // enforce 'Crockford' indentation ...
+    "@stylistic/indent-binary-ops": [ `error`, 4 ],
     // downgrade to warn until the correct pattern is found
     "@stylistic/jsx-closing-tag-location": [ `warn` ],
+    // enforce curly braces around props and children
+    "@stylistic/jsx-curly-brace-presence": [ `error`, {
+        props: `always`,
+        children: `always`,
+        propElementValues: `always`
+    } ],
     // enforce no space for object literals and spaces for jsx attributes ...
     "@stylistic/jsx-curly-spacing": [ `warn`, {
         when: `always`,
         attributes: true,
         children: true
     } ],
+
+    // enforce 'Crockford' indentation ...
+    "@stylistic/jsx-indent-props": [ `error`, 4 ],
+
     // turn this off for it conflicts with core no-extra-parens ...
     "@stylistic/jsx-wrap-multilines": [ `off` ],
     "@stylistic/key-spacing": [ `error`, {
@@ -140,7 +153,7 @@ export default {
         prev: `*`,
         next: [ `if`, `for`, `class`, `const`, `do`, `let`, `return`, `switch`, `try`, `var`, `while` ]
     } ],
-    // this rule is on of the most important one to me and changing it would require serious counter arguments about performance ...
+    // this rule is one of the most important one to me and changing it would require serious counter arguments about performance ...
     "@stylistic/quotes": [ `error`, `backtick`, {
         avoidEscape: true,
         allowTemplateLiterals: true

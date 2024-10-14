@@ -1,11 +1,11 @@
 {
     "name": "@mulekick/eslint-config-muleslint",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "description": "Mulekicks's base JS / TS / React / Node ESLint config, following my personal standards 😁",
     "type": "module",
     "main": "eslint.config.js",
     "scripts": {
-        "test": "cd sample && npm i && test $(npx eslint script.ts --quiet --format ../formatter.js) -eq 9 && rm -rf node_modules package-lock.json && exit 0 || rm -rf node_modules package-lock.json && exit 1",
+        "test": "cd sample && npm i && test $(npx eslint script.ts --quiet --format ../formatter.js) -eq 8 && rm -rf node_modules package-lock.json && exit 0 || rm -rf node_modules package-lock.json && exit 1",
         "postpublish": "git add . && git commit -m \"$npm_package_name: version $npm_package_version published on $(date +%F\\ %r)\" && git push -u origin master"
     },
     "exports": {
@@ -17,6 +17,7 @@
         "./rules/node.disable.problems": "./rules/node.disable.problems.js",
         "./rules/node.override.problems": "./rules/node.override.problems.js",
         "./rules/node.override.suggestions": "./rules/node.override.suggestions.js",
+        "./rules/typescript.override.strict": "./rules/typescript.override.strict.js",
         "./package.json": "./package.json"
     },
     "dependencies": {

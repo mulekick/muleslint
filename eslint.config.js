@@ -20,6 +20,7 @@ import coreOverrideFormatting from './rules/core.override.formatting.js';
 import nodeDisableProblems from "./rules/node.disable.problems.js";
 import nodeOverrideProblems from "./rules/node.override.problems.js";
 import nodeOverrideSuggestions from "./rules/node.override.suggestions.js";
+import typescriptOverrideStrict from './rules/typescript.override.strict.js';
 
 // extends eslint recommended, stylistic recomended, typescript strictly typed, react recommended and custom rules
 export default typescript.config(eslint.configs.recommended, formatting.configs[`recommended-flat`], ...typescript.configs.strictTypeChecked, react.configs.flat.recommended, {
@@ -73,7 +74,8 @@ export default typescript.config(eslint.configs.recommended, formatting.configs[
         ...coreOverrideFormatting,
         ...nodeDisableProblems,
         ...nodeOverrideProblems,
-        ...nodeOverrideSuggestions
+        ...nodeOverrideSuggestions,
+        ...typescriptOverrideStrict
     }
 }, {
     // spread flat config for disabling type-checked linting

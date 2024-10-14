@@ -40,10 +40,6 @@ export default {
         disallowArithmeticOperators: true
     } ],
     "no-unused-private-class-members": [ `error` ],
-    // those rules make type assertions mandatory when needed ...
-    "@typescript-eslint/no-unsafe-argument": [ `warn` ],
-    "@typescript-eslint/no-unsafe-call": [ `warn` ],
-    "@typescript-eslint/no-unsafe-member-access": [ `warn` ],
     // use the ts extension rule
     "no-use-before-define": [ `off` ],
     "@typescript-eslint/no-use-before-define": [ `error` ],
