@@ -259,9 +259,10 @@ export default {
     } ],
     // upgrade to error to enforce wrapping of assignments in parentheses ...
     "no-return-assign": [ `error`, `except-parens` ],
-    // use the ts extension rule (broken)
-    "no-return-await": [ `error` ],
-    "@typescript-eslint/no-return-await": [ `off` ],
+    // enforce awaiting returned promises for stack trace accuracy on error
+    // use the ts extension rule
+    "no-return-await": [ `off` ],
+    "@typescript-eslint/return-await": [ `error`, `always` ],
     "no-script-url": [ `error` ],
     // uncomment if the restricted syntax is too restrictive ...
     // "no-sequences": ["error", {
@@ -290,9 +291,9 @@ export default {
         ignoreOnInitialization: true
     } ],
     // upgrade to error
-    // use the ts extension rule (broken)
-    "no-throw-literal": [ `error` ],
-    "@typescript-eslint/no-throw-literal": [ `off` ],
+    // use the ts extension rule
+    "no-throw-literal": [ `off` ],
+    "@typescript-eslint/only-throw-error": [ `error` ],
     // tunr this off since some use cases have to return undefined at some point
     // no-global-assign will prevent undefined from being overwritten / shadowed ...
     "no-undefined": [ `off` ],

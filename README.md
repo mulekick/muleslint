@@ -46,6 +46,7 @@ export default typescript.config(...muleslint, {
 | ```react.configs.recommended```            | recommended configuration from the eslint [react plugin](https://www.npmjs.com/package/eslint-plugin-react)                                                               |
 | ```plugin:node/recommended```              | recommended configuration from the eslint [node plugin](https://github.com/mysticatea/eslint-plugin-node)                                                                 |
 | ```plugin:import/recommended```            | recommended configuration from the eslint [import plugin](https://github.com/import-js/eslint-plugin-import)                                                              |
+| ```plugin:security/recommended```          | recommended configuration from the eslint [security plugin](https://github.com/eslint-community/eslint-plugin-security)                                                   |
 
 - It also uses the [html plugin](https://github.com/BenoitZugmeyer/eslint-plugin-html) to lint JS code in HTML pages ```<script>``` tags.
 - Quite a few of the ```eslint.configs.recommended``` and ```stylistic.configs.recommended``` options are overriden 😁

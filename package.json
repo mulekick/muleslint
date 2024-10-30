@@ -1,11 +1,11 @@
 {
     "name": "@mulekick/eslint-config-muleslint",
-    "version": "2.0.6",
+    "version": "2.1.0",
     "description": "Mulekicks's base JS / TS / React / Node ESLint config, following my personal standards 😁",
     "type": "module",
     "main": "eslint.config.js",
     "scripts": {
-        "test": "cd sample && npm i && test $(npx eslint script.ts --quiet --format ../formatter.js) -eq 8 && rm -rf node_modules package-lock.json && exit 0 || rm -rf node_modules package-lock.json && exit 1",
+        "test": "cd sample && npm i && test $(npx eslint script.ts --quiet --format ../formatter.js) -eq 15 && rm -rf node_modules package-lock.json && exit 0 || rm -rf node_modules package-lock.json && exit 1",
         "postpublish": "git add . && git commit -m \"$npm_package_name: version $npm_package_version published on $(date +%F\\ %r)\" && git push -u origin master"
     },
     "exports": {
@@ -21,15 +21,16 @@
         "./package.json": "./package.json"
     },
     "dependencies": {
-        "@eslint/js": "^9.11.1",
-        "@stylistic/eslint-plugin": "^2.8.0",
+        "@eslint/js": "^9.13.0",
+        "@stylistic/eslint-plugin": "^2.9.0",
         "@types/eslint__js": "^8.42.3",
         "eslint-plugin-html": "^8.1.2",
-        "eslint-plugin-import": "^2.30.0",
+        "eslint-plugin-import": "^2.31.0",
         "eslint-plugin-node": "^11.1.0",
-        "eslint-plugin-react": "^7.36.1",
-        "eslint-plugin-react-hooks": "^4.6.2",
-        "typescript-eslint": "^8.7.0"
+        "eslint-plugin-react": "^7.37.2",
+        "eslint-plugin-react-hooks": "^5.0.0",
+        "eslint-plugin-security": "^3.0.1",
+        "typescript-eslint": "^8.12.2"
     },
     "peerDependencies": {
         "@types/node": "^22.6.2",

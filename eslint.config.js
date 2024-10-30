@@ -11,6 +11,7 @@ import hooks from "eslint-plugin-react-hooks";
 import node from "eslint-plugin-node";
 import html from "eslint-plugin-html";
 import important from "eslint-plugin-import";
+import security from "eslint-plugin-security";
 
 // import modules
 import coreDisableProblems from "./rules/core.disable.problems.js";
@@ -22,8 +23,8 @@ import nodeOverrideProblems from "./rules/node.override.problems.js";
 import nodeOverrideSuggestions from "./rules/node.override.suggestions.js";
 import typescriptOverrideStrict from './rules/typescript.override.strict.js';
 
-// extends eslint recommended, stylistic recomended, typescript strictly typed, react recommended and custom rules
-export default typescript.config(eslint.configs.recommended, formatting.configs[`recommended-flat`], ...typescript.configs.strictTypeChecked, react.configs.flat.recommended, {
+// extends eslint recommended, stylistic recomended, typescript strictly typed, react recommended, security recommended and custom rules
+export default typescript.config(eslint.configs.recommended, formatting.configs[`recommended-flat`], ...typescript.configs.strictTypeChecked, react.configs.flat.recommended, security.configs.recommended, {
     name: `eslint-config-muleslint/recommended`,
     // lint js as well as ts, exclude build files
     files: [ `**/*.{js,jsx,ts,tsx}` ],
