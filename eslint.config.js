@@ -1,14 +1,14 @@
 // import core dependencies
-import eslint from '@eslint/js';
-// eslint-disable-next-line node/no-missing-import
+import eslint from "@eslint/js";
+// eslint-disable-next-line import/no-unresolved
 import typescript from "typescript-eslint";
-import globals from 'globals';
+import globals from "globals";
 
 // import plugins
 import formatting from "@stylistic/eslint-plugin";
 import react from "eslint-plugin-react";
 import hooks from "eslint-plugin-react-hooks";
-import node from "eslint-plugin-node";
+import node from "eslint-plugin-n";
 import html from "eslint-plugin-html";
 import important from "eslint-plugin-import";
 import security from "eslint-plugin-security";
@@ -17,14 +17,14 @@ import security from "eslint-plugin-security";
 import coreDisableProblems from "./rules/core.disable.problems.js";
 import coreOverrideProblems from "./rules/core.override.problems.js";
 import coreOverrideSuggestions from "./rules/core.override.suggestions.js";
-import coreOverrideFormatting from './rules/core.override.formatting.js';
+import coreOverrideFormatting from "./rules/core.override.formatting.js";
 import nodeDisableProblems from "./rules/node.disable.problems.js";
 import nodeOverrideProblems from "./rules/node.override.problems.js";
 import nodeOverrideSuggestions from "./rules/node.override.suggestions.js";
-import typescriptOverrideStrict from './rules/typescript.override.strict.js';
+import typescriptOverrideStrict from "./rules/typescript.override.strict.js";
 
-// extends eslint recommended, stylistic recomended, typescript strictly typed, react recommended, security recommended and custom rules
-export default typescript.config(eslint.configs.recommended, formatting.configs[`recommended-flat`], ...typescript.configs.strictTypeChecked, react.configs.flat.recommended, security.configs.recommended, {
+// extends eslint recommended, stylistic recommended, typescript strictly typed, import recommended, node recommended, react + hooks recommended, security recommended and custom rules
+export default typescript.config(eslint.configs.recommended, formatting.configs.recommended, ...typescript.configs.strictTypeChecked, important.flatConfigs.recommended, important.flatConfigs.typescript, node.configs[`flat/recommended`], react.configs.flat.recommended, hooks.configs[`recommended-latest`], security.configs.recommended, {
     name: `eslint-config-muleslint/recommended`,
     // lint js as well as ts, exclude build files
     files: [ `**/*.{js,jsx,ts,tsx}` ],
@@ -60,15 +60,10 @@ export default typescript.config(eslint.configs.recommended, formatting.configs[
     },
     // declare as plugin for compatibility
     plugins: {
-        [`react-hooks`]: hooks,
-        html,
-        important,
-        node
+        html
     },
     // custom rules
     rules: {
-        // flat configs not supported ...
-        ...hooks.configs.recommended.rules,
         ...coreDisableProblems,
         ...coreOverrideProblems,
         ...coreOverrideSuggestions,

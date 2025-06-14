@@ -97,6 +97,7 @@ export default {
         max: 50
     } ],
     // all standard functions are lowercase-started, all constructor functions are uppercase-started ...
+    // that's a pretty restrictive pattern but keep as-is for now and downgrade / disable on a case by case basis ...
     "new-cap": [ `error`, {
         newIsCap: true,
         capIsNew: true,
@@ -345,7 +346,7 @@ export default {
         // to me, enforcing the use of shorthand syntax implies that arrow functions must be explicit and visible ...
         avoidExplicitReturnArrows: false
     } ],
-    "one-var": [ `error`, `consecutive` ],
+    "one-var": [ `error`, `never` ],
     "one-var-declaration-per-line": [ `error`, `always` ],
     "operator-assignment": [ `warn`, `always` ],
     "prefer-arrow-callback": [ `warn`, {

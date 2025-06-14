@@ -2,9 +2,11 @@ import bogus from "bogus.ts";
 
 try {
 
-    const c = ``.test(new RegExp("\s", "u")) == false;
+    const
+        
+        c = ``.test(new RegExp("\s", "u")) == false,
 
-    const b:undefined = 5;
+        b:undefined = 5;
 
     const a:any = bogus(bs);
 
