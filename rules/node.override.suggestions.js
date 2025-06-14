@@ -8,7 +8,8 @@ export default {
     // CJS specific
     "n/exports-style": [ `error`, `module.exports` ],
     // restrict imports to *.js files for now, downgrade to warn
-    "n/file-extension-in-import": [ `warn`, `always`, {
+    // fork version looks broken, rely on tsconfig ts extension imort instead
+    "n/file-extension-in-import": [ `off`, `always`, {
         ".js": `always`
     } ],
     "n/global-require": [ `error` ],
