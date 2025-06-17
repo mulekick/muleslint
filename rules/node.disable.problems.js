@@ -4,7 +4,7 @@
 // -------------------- possible problems -------------------------
 export default {
     // for the moment I prefer shell aliases + shebang over package.json bin field
-    "node/shebang": [ `off` ],
+    "n/hashbang": [ `off` ],
     // unnecessary if errors are properly handled
-    "node/no-process-exit": [ `off` ]
+    "n/no-process-exit": [ `off` ]
 };
