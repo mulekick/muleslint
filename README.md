@@ -21,13 +21,13 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 - A minimal `eslint.config.js` file included in the project's root folder :
 
 ```js
-// eslint-disable-next-line n/no-unpublished-import, n/no-missing-import
+/* eslint-disable n/no-unpublished-import */
 import muleslint from "@mulekick/eslint-config-muleslint";
-// eslint-disable-next-line n/no-extraneous-import
-import typescript from "typescript-eslint";
+// eslint-disable-next-line import/no-unresolved
+import {defineConfig} from 'eslint/config';
 
 // .eslintignore doesn't work with flat configs
-export default typescript.config(...muleslint, {
+export default defineConfig(...muleslint, {
     ignores: [ `**/node_modules/**`, `**/dist/**`, `**/build/**` ]
 });
 ```

@@ -1,8 +1,15 @@
-// ================================================================
-// ===== Override default options for eslint:recommended rules ====
-// ================================================================
-// -------------------- layout & formatting -----------------------
-export default {
+/**
+ * Override default options for eslint:recommended rules
+ * @module
+ */
+
+// import types
+import type {Config} from "eslint/config";
+
+/**
+ * Override layout & formatting related rules.
+ */
+export const coreOverrideFormatting: Config[`rules`] = {
     "@stylistic/array-bracket-newline": [ `warn`, `consistent` ],
     // upgrade this to error ...
     "@stylistic/array-bracket-spacing": [ `error`, `always` ],
@@ -30,7 +37,7 @@ export default {
     "@stylistic/dot-location": [ `error`, `property` ],
     // no new lines at the end of files ...
     "@stylistic/eol-last": [ `error`, `never` ],
-    "@stylistic/func-call-spacing": [ `error`, `never` ],
+    "@stylistic/function-call-spacing": [ `error`, `never` ],
     // experiment with this ...
     "@stylistic/function-call-argument-newline": [ `warn`, `consistent` ],
     // no valid reason to ever change that setting ...
@@ -108,7 +115,7 @@ export default {
         conditionalAssign: false,
         returnAssign: false,
         nestedBinaryExpressions: false,
-        enforceForArrowConditionals: false
+        ignoredNodes: [ `ArrowFunctionExpression[body.type=ConditionalExpression]` ]
     } ],
     // downgrade to warn (inline comments, matrixes representation etc) ...
     "@stylistic/no-multi-spaces": [ `warn` ],
@@ -156,7 +163,7 @@ export default {
     // this rule is one of the most important one to me and changing it would require serious counter arguments about performance ...
     "@stylistic/quotes": [ `error`, `backtick`, {
         avoidEscape: true,
-        allowTemplateLiterals: true
+        allowTemplateLiterals: `always`
     } ],
     "@stylistic/quote-props": [ `error`, `as-needed`, {
         keywords: true,

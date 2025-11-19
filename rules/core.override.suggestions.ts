@@ -1,8 +1,15 @@
-// ================================================================
-// ===== Override default options for eslint:recommended rules ====
-// ================================================================
-// ------------------------ suggestions ---------------------------
-export default {
+/**
+ * Override default options for eslint:recommended rules
+ * @module
+ */
+
+// import types
+import type {Config} from "eslint/config";
+
+/**
+ * Override suggestions-related rules
+ */
+export const coreOverrideSuggestions: Config[`rules`] = {
     // downgrade to warn, authorize getters without setters
     "accessor-pairs": [ `warn`, {
         setWithoutGet: true,

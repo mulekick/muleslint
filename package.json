@@ -1,35 +1,41 @@
 {
     "name": "@mulekick/eslint-config-muleslint",
-    "version": "2.2.3",
+    "version": "2.3.0",
     "description": "Mulekicks's base JS / TS / React / Node ESLint config, following my personal standards 😁",
     "type": "module",
-    "main": "eslint.config.js",
     "scripts": {
+        "list": "npx tsc --listFilesOnly | sort",
+        "typecheck": "npx tsc --noEmit && echo 'type checking was successful'",
+        "lint": "npx eslint .",
         "test": "cd sample && npm i && test $(npx eslint script.ts --quiet --format ../formatter.js) -eq 16 && rm -rf node_modules package-lock.json && exit 0 || rm -rf node_modules package-lock.json && exit 1",
-        "postpublish": "git add . && git commit -m \"$npm_package_name: version $npm_package_version published on $(date +%F\\ %r)\" && git push -u origin master"
+        "types:build": "npx tsc",
+        "build": "ENTRYPOINTS=\"eslint.config.ts rules/*.ts\" && npx esbuild ${ENTRYPOINTS[*]} --platform=node --target=node22.15.0 --packages=external --format=esm --analyze --outdir=dist",
+        "prepublishOnly": "npm run types:build && npm run build",
+        "postpublish": "git add . && git commit -m \"$npm_package_name: version $npm_package_version published on $(date +%F\\ %r)\" && git push -u origin master",
+        "docs:build": "npx typedoc"
     },
     "exports": {
-        ".": "./eslint.config.js",
-        "./rules/core.disable.problems": "./rules/core.disable.problems.js",
-        "./rules/core.override.problems": "./rules/core.override.problems.js",
-        "./rules/core.override.suggestions": "./rules/core.override.suggestions.js",
-        "./rules/core.override.formatting": "./rules/core.override.formatting.js",
-        "./rules/node.disable.problems": "./rules/node.disable.problems.js",
-        "./rules/node.override.problems": "./rules/node.override.problems.js",
-        "./rules/node.override.suggestions": "./rules/node.override.suggestions.js",
-        "./rules/typescript.override.strict": "./rules/typescript.override.strict.js",
+        ".": "./dist/eslint.config.js",
+        "./rules/core.disable.problems": "./dist/rules/core.disable.problems.js",
+        "./rules/core.override.problems": "./dist/rules/core.override.problems.js",
+        "./rules/core.override.suggestions": "./dist/rules/core.override.suggestions.js",
+        "./rules/core.override.formatting": "./dist/rules/core.override.formatting.js",
+        "./rules/node.disable.problems": "./dist/rules/node.disable.problems.js",
+        "./rules/node.override.problems": "./dist/rules/node.override.problems.js",
+        "./rules/node.override.suggestions": "./dist/rules/node.override.suggestions.js",
+        "./rules/typescript.override.strict": "./dist/rules/typescript.override.strict.js",
         "./package.json": "./package.json"
     },
     "dependencies": {
-        "@eslint/js": "^9.29.0",
-        "@stylistic/eslint-plugin": "^4.4.1",
+        "@eslint/js": "^9.39.1",
+        "@stylistic/eslint-plugin": "^5.6.1",
         "eslint-plugin-html": "^8.1.3",
-        "eslint-plugin-import": "^2.31.0",
-        "eslint-plugin-n": "^17.20.0",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-n": "^17.23.1",
         "eslint-plugin-react": "^7.37.5",
-        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-hooks": "^7.0.1",
         "eslint-plugin-security": "^3.0.1",
-        "typescript-eslint": "^8.34.0"
+        "typescript-eslint": "^8.47.0"
     },
     "peerDependencies": {
         "@types/node": "^24.0.1",
@@ -40,6 +46,18 @@
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "typescript": "^5.8.3"
+    },
+    "devDependencies": {
+        "@types/eslint": "^9.6.1",
+        "@types/eslint-plugin-security": "^3.0.0",
+        "esbuild": "^0.27.0",
+        "jiti": "^2.6.1",
+        "remark-insert-headings": "^0.0.0",
+        "remark-toc": "^9.0.0",
+        "typedoc": "^0.28.14",
+        "typedoc-plugin-markdown": "^4.9.0",
+        "typedoc-plugin-missing-exports": "4.1.2",
+        "typedoc-plugin-remark": "^2.0.1"
     },
     "keywords": [
         "eslint",

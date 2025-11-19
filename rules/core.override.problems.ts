@@ -1,8 +1,15 @@
-// ================================================================
-// ===== Override default options for eslint:recommended rules ====
-// ================================================================
-// --------------------- possible problems ------------------------
-export default {
+/**
+ * Override default options for eslint:recommended rules
+ * @module
+ */
+
+// import types
+import type {Config} from "eslint/config";
+
+/**
+ * Override rules related to possible problems.
+ */
+export const coreOverrideProblems: Config[`rules`] = {
     "array-callback-return": [ `error`, {
         allowImplicit: false,
         checkForEach: true

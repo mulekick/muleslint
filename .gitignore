@@ -1,4 +1,6 @@
 # exclude node modules
-**/node_modules
-# exclude package-lock.json
-**/package-lock.json
+node_modules
+# exclude build
+dist
+# exclude docs
+docs

@@ -1,6 +1,6 @@
-# exclude everything except unexcludable files (package.json, README.md, LICENSE, main file and rules directory)
+# exclude everything except unexcludable files (package.json, README.md, LICENSE and /dist directory)
 *
 .*
 /*
-!/rules
-!/rules/*
+!/dist/*
+!/dist/rules/*

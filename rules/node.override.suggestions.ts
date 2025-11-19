@@ -1,8 +1,15 @@
-// ================================================================
-// == Override default options for plugin:node/recommended rules ==
-// ================================================================
-// ------------------------ suggestions ---------------------------
-export default {
+/**
+ * Override default options for `plugin:n/recommended` rules
+ * @module
+ */
+
+// import types
+import type {Config} from "eslint/config";
+
+/**
+ * Override suggestions-related rules
+ */
+export const nodeOverrideSuggestions: Config[`rules`] = {
     // very important rule, update callbacks names list when necessary
     "n/callback-return": [ `error`, [ `callback`, `cb`, `next` ] ],
     // CJS specific

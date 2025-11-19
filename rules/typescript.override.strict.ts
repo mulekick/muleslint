@@ -1,7 +1,15 @@
-// ================================================================
-// ===== Override typescript:strictTypeChecked specific rules =====
-// ================================================================
-export default {
+/**
+ * Override typescript:strictTypeChecked specific rules
+ * @module
+ */
+
+// import types
+import type {Config} from "eslint/config";
+
+/**
+ * Override typescript-related rules.
+ */
+export const typescriptOverrideStrict: Config[`rules`] = {
     // set of rules that make type assertions mandatory when needed ...
     "@typescript-eslint/no-unsafe-member-access": [ `warn` ],
     "@typescript-eslint/no-unsafe-assignment": [ `warn` ],

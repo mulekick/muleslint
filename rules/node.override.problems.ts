@@ -1,8 +1,15 @@
-// ================================================================
-// == Override default options for plugin:node/recommended rules ==
-// ================================================================
-// --------------------- possible problems ------------------------
-export default {
+/**
+ * Override default options for plugin:n/recommended rules
+ * @module
+ */
+
+// import types
+import type {Config} from "eslint/config";
+
+/**
+ * Override rules related to possible problems.
+ */
+export const nodeOverrideProblems: Config[`rules`] = {
     "n/handle-callback-err": [ `error`, `^(e|err|error\\w*)$` ],
     // too bad callback name is not regex-configurable ...
     "n/no-callback-literal": [ `error` ],
