@@ -21,9 +21,8 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 - A minimal `eslint.config.js` file included in the project's root folder :
 
 ```js
-/* eslint-disable n/no-unpublished-import */
+/* eslint-disable import/no-unresolved */
 import muleslint from "@mulekick/eslint-config-muleslint";
-// eslint-disable-next-line import/no-unresolved
 import {defineConfig} from 'eslint/config';
 
 // .eslintignore doesn't work with flat configs
