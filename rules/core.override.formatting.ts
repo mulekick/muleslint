@@ -179,7 +179,12 @@ export const coreOverrideFormatting: Config[`rules`] = {
     } ],
     "@stylistic/semi-style": [ `error`, `last` ],
     "@stylistic/space-before-blocks": [ `error`, `always` ],
-    "@stylistic/space-before-function-paren": [ `error`, `never` ],
+    "@stylistic/space-before-function-paren": [ `error`, {
+        anonymous: `never`,
+        named: `never`,
+        asyncArrow: `never`,
+        [`catch`]: `always`
+    } ],
     "@stylistic/space-in-parens": [ `error`, `never` ],
     "@stylistic/space-infix-ops": [ `error`, {
         // original way of casting to int32 ...
@@ -197,9 +202,16 @@ export const coreOverrideFormatting: Config[`rules`] = {
     "@stylistic/template-curly-spacing": [ `error`, `always` ],
     "@stylistic/template-tag-spacing": [ `error`, `never` ],
     // make type annotations pattern consistent with the key-spacing rule ...
+    // see https://github.com/eslint-stylistic/eslint-stylistic/pull/1037
     "@stylistic/type-annotation-spacing": [ `error`, {
         before: false,
-        after: true
+        after: true,
+        overrides: {
+            arrow: {
+                before: true,
+                after: true
+            }
+        }
     } ],
     // !!! not included in stylistic (broken) !!!
     "unicode-bom": [ `error`, `never` ],
