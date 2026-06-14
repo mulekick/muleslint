@@ -13,10 +13,10 @@ I use the ESLint extension on Visual Studio code in my day-to day coding activit
 
 - Windows 10 x64, Hyper-V enabled.
 - Debian Bookworm running in a Hyper-V VM.
-- Node.js v22.15.0 LTS on Debian.
+- Node.js v24.16.0 LTS on Debian.
 - VSCode targeting Debian through SSH.
 - VSCode ESLint extension enabled.
-- ESLint v9.29.0 installed as a project dev dependency.
+- ESLint v9.39.4 installed as a project dev dependency.
 - `@mulekick/eslint-config-muleslint` installed as a project dev dependency.
 - A minimal `eslint.config.js` file included in the project's root folder :
 

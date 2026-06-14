@@ -2,6 +2,9 @@
     "include": [ "**/*.ts" ],
     "exclude": [ "**/node_modules/**", "**/dist/**", "**/build/**", "**/sample/**" ],
     "compilerOptions": {
+        
+        // silence deprecation warnings (we still use typescript 5.8)
+        "ignoreDeprecations": "5.0",
 
         /* Projects */
         // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */

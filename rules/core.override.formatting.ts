@@ -205,13 +205,7 @@ export const coreOverrideFormatting: Config[`rules`] = {
     // see https://github.com/eslint-stylistic/eslint-stylistic/pull/1037
     "@stylistic/type-annotation-spacing": [ `error`, {
         before: false,
-        after: true,
-        overrides: {
-            arrow: {
-                before: true,
-                after: true
-            }
-        }
+        after: true
     } ],
     // !!! not included in stylistic (broken) !!!
     "unicode-bom": [ `error`, `never` ],
