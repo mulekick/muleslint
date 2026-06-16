@@ -203,9 +203,16 @@ export const coreOverrideFormatting: Config[`rules`] = {
     "@stylistic/template-tag-spacing": [ `error`, `never` ],
     // make type annotations pattern consistent with the key-spacing rule ...
     // see https://github.com/eslint-stylistic/eslint-stylistic/pull/1037
+    // deprecated arrow override is still supported, maybe create an issue to ask for official reinstatement ?
     "@stylistic/type-annotation-spacing": [ `error`, {
         before: false,
-        after: true
+        after: true,
+        overrides: {
+            arrow: {
+                before: true,
+                after: true
+            }
+        }
     } ],
     // !!! not included in stylistic (broken) !!!
     "unicode-bom": [ `error`, `never` ],
