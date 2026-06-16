@@ -32,6 +32,13 @@ import {typescriptOverrideStrict} from "./rules/typescript.override.strict.js";
 import type {Config} from "eslint/config";
 
 /**
+ * Double check react plugin config.
+ */
+const reactPluginConfig = react.configs.flat[`recommended`];
+if (!reactPluginConfig)
+    throw new Error(`React plugin configuration not found, aborting.`);
+
+/**
  * Export custom configuration.
  */
 const muleslint: Array<Config> = defineConfig(
@@ -47,7 +54,7 @@ const muleslint: Array<Config> = defineConfig(
     // node recommended
     node.configs[`flat/recommended`],
     // react + hooks recommended
-    react.configs.flat.recommended,
+    reactPluginConfig,
     hooks.configs.flat.recommended,
     // security recommended
     security.configs.recommended,
@@ -58,7 +65,7 @@ const muleslint: Array<Config> = defineConfig(
         files: [ `**/*.{js,jsx,ts,tsx}` ],
         ignores: [ `**/dist/**`, `**/build/**` ],
         languageOptions: {
-            ...react.configs.flat.recommended.languageOptions,
+            ...reactPluginConfig.languageOptions,
             ecmaVersion: `latest`,
             sourceType: `module`,
             // typescript parser for eslint + options

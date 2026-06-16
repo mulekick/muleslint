@@ -1,6 +1,6 @@
 {
     "name": "@mulekick/eslint-config-muleslint",
-    "version": "2.3.3",
+    "version": "3.0.0",
     "description": "Mulekicks's base JS / TS / React / Node ESLint config, following my personal standards 😁",
     "type": "module",
     "scripts": {
@@ -9,7 +9,7 @@
         "lint": "npx eslint .",
         "test": "cd sample && npm i && test $(npx eslint script.ts --quiet --format ../formatter.js) -eq 16 && rm -rf node_modules package-lock.json && exit 0 || rm -rf node_modules package-lock.json && exit 1",
         "types:build": "npx tsc",
-        "build": "ENTRYPOINTS=\"eslint.config.ts rules/*.ts\" && npx esbuild ${ENTRYPOINTS[*]} --platform=node --target=node22.15.0 --packages=external --format=esm --analyze --outdir=dist",
+        "build": "ENTRYPOINTS=\"eslint.config.ts rules/*.ts\" && npx esbuild ${ENTRYPOINTS[*]} --platform=node --target=node24.16.0 --packages=external --format=esm --analyze --outdir=dist",
         "prepublishOnly": "npm run types:build && npm run build",
         "postpublish": "git add . && git commit -m \"$npm_package_name: version $npm_package_version published on $(date +%F\\ %r)\" && git push -u origin master",
         "docs:build": "npx typedoc"
@@ -35,7 +35,7 @@
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^7.1.1",
         "eslint-plugin-security": "^4.0.1",
-        "typescript-eslint": "^8.61.0"
+        "typescript-eslint": "^8.61.1"
     },
     "peerDependencies": {
         "@types/node": "^25.9.3",
@@ -45,7 +45,7 @@
         "globals": "^17.6.0",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "typescript": "^5.8.3"
+        "typescript": "^6.0.3"
     },
     "devDependencies": {
         "@types/eslint": "^9.6.1",
